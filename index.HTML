@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>นายวงศพัทธ์ เข้มแข็ง | Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Mitr:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sahara:#FF8A3D;
+    --sahara-dark:#E85D25;
+    --tundra:#4FC3F7;
+    --tundra-dark:#1E7FB8;
+    --rainforest:#3FAE72;
+    --rainforest-dark:#25784E;
+    --rodentia:#C06FE0;
+    --rodentia-dark:#8E45AE;
+    --sunshine:#FFC93C;
+    --nightden:#1B1F3B;
+    --paper:#FFFAF0;
+    --white:#FFFFFF;
+    --ink:#232748;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Sarabun','Nunito',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Mitr','Fredoka',sans-serif;
+  }
+  .en{font-family:'Fredoka','Mitr',sans-serif;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  section{position:relative;padding:70px 20px;overflow:hidden;}
+  .wrap{max-width:1080px;margin:0 auto;}
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:60px 20px 90px;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,.25) 0 6px, transparent 7px),
+      radial-gradient(circle at 85% 15%, rgba(255,255,255,.2) 0 5px, transparent 6px),
+      radial-gradient(circle at 70% 80%, rgba(255,255,255,.18) 0 8px, transparent 9px),
+      radial-gradient(circle at 25% 75%, rgba(255,255,255,.22) 0 4px, transparent 5px),
+      radial-gradient(circle at 92% 60%, rgba(255,255,255,.2) 0 6px, transparent 7px),
+      linear-gradient(135deg, var(--sahara) 0%, var(--sunshine) 30%, var(--tundra) 68%, var(--rainforest) 100%);
+    background-size: 220px 220px, 260px 260px, 300px 300px, 180px 180px, 240px 240px, 100% 100%;
+    color:var(--white);
+    isolation:isolate;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(27,31,59,0) 55%, rgba(27,31,59,.55) 100%);
+    z-index:0;
+  }
+  .hero > *{position:relative;z-index:1;}
+  .city-badge{
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-size:.78rem;
+    background:rgba(27,31,59,.35);
+    border:2px solid rgba(255,255,255,.7);
+    padding:8px 20px;
+    border-radius:999px;
+    margin-bottom:26px;
+  }
+  .avatar{
+    width:150px;height:150px;
+    border-radius:50%;
+    background:var(--white);
+    border:6px solid var(--white);
+    box-shadow:0 10px 30px rgba(27,31,59,.35);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fredoka',sans-serif;
+    font-weight:700;
+    font-size:3rem;
+    color:var(--tundra-dark);
+    position:relative;
+    z-index:2;
+  }
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+  /* ---------- Buddy-cop ears headband (fox + rabbit) ---------- */
+  .avatar-wrap{
+    position:relative;
+    width:150px;height:150px;
+    margin-bottom:22px;
+    animation:float 4.5s ease-in-out infinite;
+  }
+  .ears{position:absolute; inset:0; z-index:1; pointer-events:none;}
+  .ear{position:absolute; bottom:62%;}
+  .ear-inner{position:absolute; left:50%; top:22%; transform:translateX(-50%); border-radius:50% 50% 45% 45%/60% 60% 40% 40%;}
+
+  /* fox ears — Nick's colours: warm orange, black tips, cream inner */
+  .fox-ear{
+    width:44px;height:58px;
+    background:linear-gradient(180deg,#1B1F3B 0 22%, var(--sahara) 22% 100%);
+    border-radius:50% 50% 42% 42% / 65% 65% 35% 35%;
+    box-shadow:0 3px 8px rgba(27,31,59,.3);
+  }
+  .fox-ear .ear-inner{width:20px;height:30px;background:#FFE4C2;}
+  .fox-ear-l{left:-6px; transform:rotate(-28deg);}
+  .fox-ear-r{right:-6px; transform:rotate(28deg) scaleX(-1);}
+
+  /* rabbit ears — Judy's colours: soft grey, pink inner, tall & upright */
+  .rabbit-ear{
+    width:26px;height:78px;
+    background:#C7C6D9;
+    border-radius:50% 50% 40% 40% / 65% 65% 35% 35%;
+    box-shadow:0 3px 8px rgba(27,31,59,.25);
+  }
+  .rabbit-ear .ear-inner{width:12px;height:46px;background:#F4B9C9;}
+  .rabbit-ear-l{left:32px; bottom:66%; transform:rotate(-9deg);}
+  .rabbit-ear-r{right:32px; bottom:66%; transform:rotate(9deg) scaleX(-1);}
+
+  @media (max-width:420px){
+    .fox-ear{width:36px;height:48px;}
+    .rabbit-ear{width:21px;height:62px;}
+    .rabbit-ear-l{left:26px;} .rabbit-ear-r{right:26px;}
+  }
+
+  /* ---------- Glitter / sparkle effect ---------- */
+  .glitter-layer{
+    position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;
+  }
+  .sparkle{
+    position:absolute;
+    width:6px;height:6px;
+    background:var(--sunshine);
+    clip-path:polygon(50% 0%,63% 38%,100% 50%,63% 62%,50% 100%,37% 62%,0% 50%,37% 38%);
+    opacity:0;
+    animation:twinkle 2.6s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0; transform:scale(.4) rotate(0deg);}
+    50%{opacity:1; transform:scale(1.15) rotate(90deg);}
+  }
+  .name-glitter{
+    background:linear-gradient(100deg, var(--white) 30%, var(--sunshine) 45%, var(--white) 60%, var(--sunshine) 75%, var(--white) 90%);
+    background-size:250% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:shimmer 4.5s linear infinite;
+  }
+  @keyframes shimmer{
+    0%{background-position:200% 0;}
+    100%{background-position:-50% 0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .avatar-wrap{animation:none;}
+    .sparkle{animation:none; opacity:.7;}
+    .name-glitter{animation:none; background-position:0 0;}
+  }
+  .hero h1{
+    font-size:clamp(2.3rem,6vw,4rem);
+    font-weight:700;
+    line-height:1.15;
+    text-shadow:0 4px 18px rgba(27,31,59,.35);
+  }
+  .hero .en-name{
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:clamp(1.1rem,2.6vw,1.6rem);
+    opacity:.95;
+    margin-top:6px;
+  }
+  .hero .role{
+    margin-top:18px;
+    font-size:clamp(1rem,2vw,1.25rem);
+    font-weight:600;
+    background:rgba(255,255,255,.18);
+    padding:10px 26px;
+    border-radius:999px;
+    backdrop-filter:blur(2px);
+  }
+  .hero .motto{
+    margin-top:30px;
+    font-style:normal;
+    font-size:1.05rem;
+    max-width:520px;
+    line-height:1.7;
+    padding:16px 22px;
+    border-left:4px solid var(--sunshine);
+    background:rgba(27,31,59,.28);
+    border-radius:0 16px 16px 0;
+    text-align:left;
+  }
+  .scroll-cue{
+    margin-top:44px;
+    font-size:.85rem;
+    letter-spacing:2px;
+    opacity:.85;
+    animation:bob 2s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+  /* ---------- DISTRICT NAV ---------- */
+  .district-nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--nightden);
+    display:flex;
+    gap:10px;
+    padding:12px 16px;
+    overflow-x:auto;
+    box-shadow:0 4px 18px rgba(0,0,0,.25);
+  }
+  .district-nav a{
+    flex:0 0 auto;
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:.82rem;
+    color:var(--white);
+    padding:9px 18px;
+    border-radius:999px;
+    border:2px solid transparent;
+    white-space:nowrap;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .district-nav a:hover, .district-nav a:focus-visible{
+    transform:translateY(-2px);
+    outline:none;
+  }
+  .district-nav a.n1{background:rgba(255,138,61,.18); border-color:var(--sahara);}
+  .district-nav a.n2{background:rgba(79,195,247,.18); border-color:var(--tundra);}
+  .district-nav a.n3{background:rgba(63,174,114,.18); border-color:var(--rainforest);}
+  .district-nav a.n4{background:rgba(192,111,224,.18); border-color:var(--rodentia);}
+  .district-nav a.n5{background:rgba(255,201,60,.18); border-color:var(--sunshine);}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .eyebrow{
+    display:inline-block;
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:.78rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:5px 14px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+  .sec-title{
+    font-size:clamp(1.6rem,4vw,2.3rem);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .sec-sub{
+    font-size:.95rem;
+    opacity:.85;
+    margin-bottom:40px;
+    max-width:560px;
+  }
+
+  /* ---------- SAHARA SQUARE (personal info) ---------- */
+  #sahara{
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 2px, transparent 2px 26px),
+      linear-gradient(160deg, var(--sahara) 0%, #FFB25E 100%);
+    color:var(--white);
+  }
+  #sahara .eyebrow{background:rgba(27,31,59,.3); color:var(--white);}
+  .info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:20px;
+  }
+  .info-card{
+    background:rgba(255,255,255,.16);
+    border:2px solid rgba(255,255,255,.35);
+    border-radius:22px;
+    padding:22px;
+    backdrop-filter:blur(3px);
+  }
+  .info-card h3{
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    font-weight:600;
+    opacity:.85;
+    margin-bottom:6px;
+  }
+  .info-card p{font-size:1.05rem;font-weight:700;}
+  .contact-row{
+    display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;
+  }
+  .contact-pill{
+    display:flex;align-items:center;gap:10px;
+    background:var(--nightden);
+    color:var(--white);
+    padding:12px 20px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:.92rem;
+    transition:transform .2s ease;
+  }
+  .contact-pill:hover{transform:translateY(-3px) scale(1.03);}
+  .contact-pill svg{width:18px;height:18px;flex:0 0 auto;}
+  .motto-strip{
+    margin-top:40px;
+    background:var(--nightden);
+    color:var(--sunshine);
+    padding:20px 26px;
+    border-radius:18px;
+    font-family:'Mitr',sans-serif;
+    font-weight:600;
+    font-size:1.05rem;
+    text-align:center;
+  }
+
+  /* ---------- TUNDRATOWN (education monorail) ---------- */
+  #tundra{
+    background:linear-gradient(180deg,#EAF8FF 0%, #D5F0FF 100%);
+    color:var(--ink);
+  }
+  #tundra .eyebrow{background:var(--tundra); color:var(--white);}
+  .monorail{
+    position:relative;
+    margin-top:20px;
+    padding-left:40px;
+  }
+  .monorail::before{
+    content:"";
+    position:absolute;
+    left:14px;top:6px;bottom:6px;
+    width:6px;
+    border-radius:6px;
+    background:repeating-linear-gradient(180deg, var(--tundra-dark) 0 14px, var(--white) 14px 22px);
+  }
+  .stop{
+    position:relative;
+    padding:0 0 40px 24px;
+  }
+  .stop:last-child{padding-bottom:0;}
+  .stop::before{
+    content:"";
+    position:absolute;
+    left:-40px;top:2px;
+    width:26px;height:26px;
+    border-radius:50%;
+    background:var(--white);
+    border:5px solid var(--tundra-dark);
+    box-shadow:0 0 0 4px #EAF8FF;
+  }
+  .stop-card{
+    background:var(--white);
+    border-radius:18px;
+    padding:20px 24px;
+    box-shadow:0 8px 22px rgba(30,127,184,.12);
+  }
+  .stop-year{
+    font-family:'Fredoka',sans-serif;
+    font-weight:700;
+    font-size:.85rem;
+    color:var(--tundra-dark);
+    letter-spacing:1px;
+    margin-bottom:6px;
+  }
+  .stop-title{font-size:1.15rem;font-weight:700;margin-bottom:4px;}
+  .stop-desc{font-size:.92rem;color:#4a4f6b;}
+
+  /* ---------- RAINFOREST DISTRICT (skills & languages) ---------- */
+  #rainforest{
+    background:
+      radial-gradient(ellipse at top left, rgba(255,255,255,.08), transparent 55%),
+      linear-gradient(160deg, var(--rainforest) 0%, var(--rainforest-dark) 100%);
+    color:var(--white);
+  }
+  #rainforest .eyebrow{background:rgba(27,31,59,.3); color:var(--white);}
+  .rf-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:26px;
+  }
+  @media (max-width:760px){.rf-grid{grid-template-columns:1fr;}}
+  .leaf-card{
+    background:rgba(255,255,255,.14);
+    border-radius:26px 8px 26px 8px;
+    border:2px solid rgba(255,255,255,.3);
+    padding:26px;
+  }
+  .leaf-card h3{font-family:'Fredoka',sans-serif;font-size:1.05rem;margin-bottom:16px;}
+  .skill-list{list-style:none;}
+  .skill-list li{
+    display:flex;gap:10px;align-items:flex-start;
+    padding:9px 0;
+    border-bottom:1px dashed rgba(255,255,255,.3);
+    font-size:.95rem;
+  }
+  .skill-list li:last-child{border-bottom:none;}
+  .skill-list li::before{content:"🌿";flex:0 0 auto;}
+  .lang-item{margin-bottom:18px;}
+  .lang-item:last-child{margin-bottom:0;}
+  .lang-name{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;margin-bottom:8px;display:flex;justify-content:space-between;}
+  .lang-bar-bg{background:rgba(27,31,59,.3);border-radius:999px;height:12px;overflow:hidden;}
+  .lang-bar-fill{height:100%;border-radius:999px;background:var(--sunshine);}
+
+  /* ---------- LITTLE RODENTIA (software / tools) ---------- */
+  #rodentia{
+    background:linear-gradient(160deg,#F7E9FF 0%, #F0DAFF 100%);
+    color:var(--ink);
+  }
+  #rodentia .eyebrow{background:var(--rodentia); color:var(--white);}
+  .mini-note{
+    font-size:.85rem;
+    color:var(--rodentia-dark);
+    font-weight:600;
+    margin-bottom:26px;
+  }
+  .mini-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(120px,1fr));
+    gap:14px;
+  }
+  .mini-chip{
+    background:var(--white);
+    border:2px solid var(--rodentia);
+    color:var(--rodentia-dark);
+    border-radius:14px;
+    padding:14px 10px;
+    text-align:center;
+    font-weight:700;
+    font-size:.82rem;
+    transform:scale(.92);
+    transition:transform .2s ease, background .2s ease, color .2s ease;
+  }
+  .mini-chip:hover{
+    transform:scale(1.08);
+    background:var(--rodentia);
+    color:var(--white);
+  }
+
+  /* ---------- DOWNTOWN (hobbies) ---------- */
+  #downtown{
+    background:var(--nightden);
+    color:var(--white);
+  }
+  #downtown .eyebrow{background:var(--sunshine); color:var(--nightden);}
+  .hobby-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:16px;
+  }
+  .hobby-card{
+    background:rgba(255,255,255,.06);
+    border-radius:18px;
+    padding:22px 16px;
+    text-align:center;
+    border-top:4px solid var(--sahara);
+  }
+  .hobby-card:nth-child(2){border-top-color:var(--tundra);}
+  .hobby-card:nth-child(3){border-top-color:var(--rainforest);}
+  .hobby-card:nth-child(4){border-top-color:var(--rodentia);}
+  .hobby-card:nth-child(5){border-top-color:var(--sunshine);}
+  .hobby-card:nth-child(6){border-top-color:var(--sahara);}
+  .hobby-emoji{font-size:2rem;margin-bottom:10px;}
+  .hobby-label{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.92rem;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:#12152A;
+    color:rgba(255,255,255,.75);
+    text-align:center;
+    padding:42px 20px 30px;
+    font-size:.85rem;
+  }
+  footer .footer-name{
+    font-family:'Mitr',sans-serif;
+    font-weight:700;
+    font-size:1.2rem;
+    color:var(--white);
+    margin-bottom:6px;
+  }
+  footer .footer-links{
+    margin-top:14px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  footer a:hover{color:var(--sunshine);}
+
+  @media (max-width:600px){
+    section{padding:54px 16px;}
+    .monorail{padding-left:32px;}
+    .stop{padding-left:18px;}
+    .stop::before{left:-32px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="glitter-layer" id="glitterLayer" aria-hidden="true"></div>
+  <span class="city-badge en">Welcome to Zootopia</span>
+
+  <div class="avatar-wrap">
+    <div class="ears" aria-hidden="true">
+      <div class="ear fox-ear fox-ear-l"><div class="ear-inner"></div></div>
+      <div class="ear rabbit-ear rabbit-ear-l"><div class="ear-inner"></div></div>
+      <div class="ear rabbit-ear rabbit-ear-r"><div class="ear-inner"></div></div>
+      <div class="ear fox-ear fox-ear-r"><div class="ear-inner"></div></div>
+    </div>
+    <div class="avatar en" aria-hidden="true">WK</div>
+  </div>
+
+  <h1 class="name-glitter">นายวงศพัทธ์ เข้มแข็ง</h1>
+  <div class="en-name">Wongsapat Khemkhaeng</div>
+  <div class="role">ช่างไฟฟ้า &nbsp;·&nbsp; นักศึกษาปริญญาตรี &nbsp;·&nbsp; พร้อมเรียนรู้ทุกเมือง ทุกงาน</div>
+  <blockquote class="motto">“เราจะเติบโต จากจุดเริ่มต้นของเรา”</blockquote>
+  <div class="scroll-cue en">SCROLL TO EXPLORE THE CITY ▾</div>
+</header>
+
+<!-- ============ DISTRICT NAV ============ -->
+<nav class="district-nav" aria-label="เมนูเขตต่าง ๆ ของเรซูเม่">
+  <a class="n1" href="#sahara">🏜️ Sahara Square</a>
+  <a class="n2" href="#tundra">❄️ Tundratown</a>
+  <a class="n3" href="#rainforest">🌴 Rainforest District</a>
+  <a class="n4" href="#rodentia">🐭 Little Rodentia</a>
+  <a class="n5" href="#downtown">🌆 Downtown</a>
+</nav>
+
+<!-- ============ SAHARA SQUARE : ข้อมูลส่วนตัว ============ -->
+<section id="sahara">
+  <div class="wrap">
+    <span class="eyebrow en">Sahara Square · ข้อมูลส่วนตัว</span>
+    <h2 class="sec-title">ทำความรู้จักกันก่อน</h2>
+    <p class="sec-sub">ข้อมูลเบื้องต้นสำหรับผู้ที่สนใจร่วมงาน</p>
+
+    <div class="info-grid">
+      <div class="info-card"><h3>ชื่อเล่น</h3><p>พีช</p></div>
+      <div class="info-card"><h3>วันเกิด</h3><p>16 เมษายน 2548</p></div>
+      <div class="info-card"><h3>อายุ</h3><p>21 ปี</p></div>
+      <div class="info-card"><h3>สัญชาติ</h3><p>ไทย</p></div>
+      <div class="info-card"><h3>ศาสนา</h3><p>พุทธ</p></div>
+      <div class="info-card"><h3>ที่อยู่</h3><p>11/5 อ.ท่ามะกา จ.กาญจนบุรี</p></div>
+    </div>
+
+    <div class="contact-row">
+      <a class="contact-pill" href="tel:0631712478">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        063 171 2478
+      </a>
+      <a class="contact-pill" href="mailto:nittiya2988@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+        nittiya2988@gmail.com
+      </a>
+      <span class="contact-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        อ.ท่ามะกา จ.กาญจนบุรี
+      </span>
+    </div>
+
+    <div class="motto-strip">คติประจำใจ: “เราจะเติบโต จากจุดเริ่มต้นของเรา”</div>
+  </div>
+</section>
+
+<!-- ============ TUNDRATOWN : ประวัติการศึกษา ============ -->
+<section id="tundra">
+  <div class="wrap">
+    <span class="eyebrow en">Tundratown · เส้นทางการศึกษา</span>
+    <h2 class="sec-title">ประวัติทางการศึกษา</h2>
+    <p class="sec-sub">แต่ละสถานีคือก้าวหนึ่งของการเติบโต จากจุดเริ่มต้นสู่ปัจจุบัน</p>
+
+    <div class="monorail">
+      <div class="stop">
+        <div class="stop-card">
+          <div class="stop-year en">2550 – 2562</div>
+          <div class="stop-title">โรงเรียนธีรศาสตร์</div>
+          <div class="stop-desc">ระดับอนุบาล – มัธยมศึกษาปีที่ 3</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-card">
+          <div class="stop-year en">2563 – 2565</div>
+          <div class="stop-title">วิทยาลัยเทคโนโลยีดอนบอสโก บ้านโป่ง</div>
+          <div class="stop-desc">ประกาศนียบัตรวิชาชีพ (ปวช.) · แผนกวิชาไฟฟ้ากำลัง</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-card">
+          <div class="stop-year en">2566 – 2567</div>
+          <div class="stop-title">วิทยาลัยเทคโนโลยีดอนบอสโก บ้านโป่ง</div>
+          <div class="stop-desc">ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.) · สาขาช่างไฟฟ้า</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-card">
+          <div class="stop-year en">2568 – ปัจจุบัน</div>
+          <div class="stop-title">มหาวิทยาลัยธนบุรี</div>
+          <div class="stop-desc">ระดับปริญญาตรี</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RAINFOREST DISTRICT : ทักษะการทำงาน + ภาษา ============ -->
+<section id="rainforest">
+  <div class="wrap">
+    <span class="eyebrow en">Rainforest District · ทักษะและความสามารถ</span>
+    <h2 class="sec-title">ทักษะการทำงาน &amp; ภาษา</h2>
+    <p class="sec-sub">เติบโตในสภาพแวดล้อมที่หลากหลาย เหมือนป่าฝนที่เต็มไปด้วยชีวิต</p>
+
+    <div class="rf-grid">
+      <div class="leaf-card">
+        <h3 class="en">Work Skills</h3>
+        <ul class="skill-list">
+          <li>การบริหารร้านอาหารขนาดเล็ก</li>
+          <li>การทำงานร่วมกันเป็นทีม</li>
+          <li>การคิดเชิงกลยุทธ์</li>
+          <li>ศิลปะการประกอบอาหาร</li>
+        </ul>
+      </div>
+      <div class="leaf-card">
+        <h3 class="en">Languages</h3>
+        <div class="lang-item">
+          <div class="lang-name"><span>ภาษาไทย</span><span class="en">Good</span></div>
+          <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:80%;"></div></div>
+        </div>
+        <div class="lang-item">
+          <div class="lang-name"><span>ภาษาอังกฤษ</span><span class="en">Good</span></div>
+          <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:75%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LITTLE RODENTIA : โปรแกรม/ทักษะ ============ -->
+<section id="rodentia">
+  <div class="wrap">
+    <span class="eyebrow en">Little Rodentia · ทักษะขนาดจิ๋วที่มีประโยชน์ใหญ่</span>
+    <h2 class="sec-title">โปรแกรม &amp; เครื่องมือที่ใช้งานได้</h2>
+    <p class="mini-note en">Small district, big skillset →</p>
+    <div class="mini-grid">
+      <div class="mini-chip">Microsoft</div>
+      <div class="mini-chip">Canva</div>
+      <div class="mini-chip">CapCut</div>
+      <div class="mini-chip">TikTok</div>
+      <div class="mini-chip">ทำงานเป็นทีม</div>
+      <div class="mini-chip">บริหารจัดการ</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOWNTOWN : งานอดิเรก ============ -->
+<section id="downtown">
+  <div class="wrap">
+    <span class="eyebrow en">Downtown · เวลาว่างและงานอดิเรก</span>
+    <h2 class="sec-title">นอกเวลางาน...</h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,.75);">ทุกเมืองต้องมีที่พักผ่อน นี่คือสิ่งที่ทำให้ชาร์จพลัง</p>
+    <div class="hobby-grid">
+      <div class="hobby-card"><div class="hobby-emoji">🍳</div><div class="hobby-label">ทำอาหาร</div></div>
+      <div class="hobby-card"><div class="hobby-emoji">🎧</div><div class="hobby-label">ฟังเพลง</div></div>
+      <div class="hobby-card"><div class="hobby-emoji">🎸</div><div class="hobby-label">เล่นกีตาร์</div></div>
+      <div class="hobby-card"><div class="hobby-emoji">🎮</div><div class="hobby-label">Roblox</div></div>
+      <div class="hobby-card"><div class="hobby-emoji">🕹️</div><div class="hobby-label">Valorant</div></div>
+      <div class="hobby-card"><div class="hobby-emoji">🚁</div><div class="hobby-label">RoV</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-name">วงศพัทธ์ เข้มแข็ง (พีช)</div>
+  <div class="en">Wongsapat Khemkhaeng</div>
+  <div class="footer-links">
+    <a href="tel:0631712478">063 171 2478</a>
+    <a href="mailto:nittiya2988@gmail.com">nittiya2988@gmail.com</a>
+  </div>
+  <div style="margin-top:18px;opacity:.6;">© 2026 · Made with ❤️ in the style of Zootopia</div>
+</footer>
+
+<script>
+  // Highlight active district while scrolling
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.district-nav a');
+  const setActive = () => {
+    let current = '';
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if(rect.top <= 120 && rect.bottom >= 120){ current = sec.id; }
+    });
+    navLinks.forEach(a => {
+      a.style.outline = a.getAttribute('href') === '#' + current ? '2px solid #fff' : 'none';
+    });
+  };
+  document.addEventListener('scroll', setActive, {passive:true});
+  setActive();
+
+  // Scatter glitter sparkles across the hero
+  const glitterLayer = document.getElementById('glitterLayer');
+  if(glitterLayer){
+    const COUNT = 45;
+    for(let i=0;i<COUNT;i++){
+      const s = document.createElement('span');
+      s.className = 'sparkle';
+      s.style.left = Math.random()*100 + '%';
+      s.style.top = Math.random()*100 + '%';
+      const size = 4 + Math.random()*7;
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.animationDuration = (1.8 + Math.random()*2.6) + 's';
+      s.style.animationDelay = (Math.random()*3) + 's';
+      if(Math.random() > 0.5){ s.style.background = 'var(--white)'; }
+      glitterLayer.appendChild(s);
+    }
+  }
+</script>
+</body>
+</html>
