@@ -1,2038 +1,568 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>นายวงศพัทธ์ เข้มแข็ง | Resume</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Noto+Serif+JP:wght@400;600;700;900&family=Zen+Kurenaido&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
-    --black:#050c16;
-    --navy:#081a31;
-    --navy2:#0d294d;
-    --blue:#1254a4;
-    --blue2:#2d7de1;
-    --gold:#d6a93d;
-    --gold2:#f3d77a;
-    --white:#f7f9fc;
-    --gray:#aebdce;
-    --line:rgba(255,255,255,.10);
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Noto Sans Thai',sans-serif;
-    color:var(--white);
-    background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(45,125,225,.16),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(214,169,61,.09),
-            transparent 25%
-        ),
-        var(--black);
-    overflow-x:hidden;
-}
-
-/* =========================
-   BACKGROUND GRID
-========================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-2;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        );
-
-    background-size:70px 70px;
-}
-
-/* =========================
-   MIST
-========================= */
-
-.mist{
-    position:fixed;
-    width:480px;
-    height:480px;
-    border-radius:50%;
-    background:rgba(255,255,255,.045);
-    filter:blur(90px);
-    pointer-events:none;
-    z-index:-1;
-    animation:mistMove 16s infinite alternate ease-in-out;
-}
-
-.mist.one{
-    top:5%;
-    left:-220px;
-}
-
-.mist.two{
-    right:-200px;
-    bottom:-100px;
-    animation-delay:4s;
-}
-
-@keyframes mistMove{
-    from{
-        transform:translate(0,0);
-    }
-
-    to{
-        transform:translate(130px,-60px);
-    }
-}
-
-/* =========================
-   LOADER
-========================= */
-
-.loader{
-    position:fixed;
-    inset:0;
-    background:#030811;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    z-index:9999;
-    transition:1s;
-}
-
-.loader.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.loader-symbol{
-    font-family:'Noto Serif JP',serif;
-    font-size:90px;
-    color:var(--gold2);
-    animation:loaderPulse 1.5s infinite;
-}
-
-.loader-text{
-    margin-top:20px;
-    font-size:13px;
-    letter-spacing:5px;
-    color:#d7e4f5;
-}
-
-@keyframes loaderPulse{
-    0%,100%{
-        transform:scale(1);
-        opacity:.55;
-    }
-
-    50%{
-        transform:scale(1.1);
-        opacity:1;
-    }
-}
-
-/* =========================
-   NAVBAR
-========================= */
-
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-
-    padding:17px 6%;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    background:rgba(4,11,21,.76);
-    backdrop-filter:blur(16px);
-
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.logo{
-    font-family:'Noto Serif JP',serif;
-    color:var(--gold2);
-    font-size:20px;
-    font-weight:900;
-}
-
-.logo span{
-    color:#fff;
-}
-
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:30px;
-}
-
-nav a{
-    color:#fff;
-    text-decoration:none;
-    font-size:14px;
-    position:relative;
-}
-
-nav a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-8px;
-    width:0;
-    height:2px;
-    background:var(--gold2);
-    transition:.3s;
-}
-
-nav a:hover::after{
-    width:100%;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    min-height:100vh;
-
-    padding:
-        140px
-        7%
-        80px;
-
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-
-    align-items:center;
-    gap:70px;
-
-    position:relative;
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-}
-
-.japanese-bg{
-    position:absolute;
-    top:-90px;
-    left:-30px;
-
-    font-family:'Zen Kurenaido',sans-serif;
-
-    font-size:clamp(
-        80px,
-        12vw,
-        170px
-    );
-
-    color:rgba(255,255,255,.035);
-
-    writing-mode:vertical-rl;
-
-    pointer-events:none;
-}
-
-.kicker{
-    color:var(--gold2);
-    font-size:13px;
-    letter-spacing:5px;
-    margin-bottom:18px;
-}
-
-.hero h1{
-    font-family:'Noto Serif JP',serif;
-
-    font-size:
-        clamp(
-            43px,
-            6vw,
-            82px
-        );
-
-    line-height:1.12;
-
-    margin-bottom:8px;
-}
-
-.name-en{
-    font-family:'Zen Kurenaido',sans-serif;
-
-    color:#9fc7f6;
-
-    font-size:
-        clamp(
-            24px,
-            3vw,
-            38px
-        );
-
-    letter-spacing:2px;
-
-    margin-bottom:28px;
-}
-
-.hero-description{
-    max-width:650px;
-
-    color:#b7c5d5;
-
-    line-height:2;
-
-    font-size:16px;
-}
-
-.buttons{
-    display:flex;
-    gap:15px;
-
-    margin-top:32px;
-
-    flex-wrap:wrap;
-}
-
-.btn{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    min-width:145px;
-
-    padding:13px 25px;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    border:1px solid var(--blue2);
-
-    transition:.35s;
-}
-
-.btn.primary{
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            #092c5b
-        );
-}
-
-.btn.gold{
-    border-color:var(--gold);
-    color:var(--gold2);
-}
-
-.btn:hover{
-    transform:translateY(-5px);
-
-    box-shadow:
-        0 14px 35px
-        rgba(24,104,214,.25);
-}
-
-/* =========================
-   PROFILE PHOTO
-========================= */
-
-.hero-photo{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    perspective:1000px;
-
-    position:relative;
-}
-
-.photo-frame{
-    width:min(430px,90vw);
-
-    aspect-ratio:4/5;
-
-    padding:11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold),
-            transparent 28%
-        ),
-        linear-gradient(
-            315deg,
-            var(--blue2),
-            transparent 35%
-        );
-
-    clip-path:polygon(
-        8% 0,
-        92% 0,
-        100% 8%,
-        100% 92%,
-        92% 100%,
-        8% 100%,
-        0 92%,
-        0 8%
-    );
-
-    transition:.25s ease;
-}
-
-.photo-inner{
-    width:100%;
-    height:100%;
-
-    overflow:hidden;
-
-    background:#2d7de1;
-
-    position:relative;
-}
-
-.photo-inner img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    display:block;
-}
-
-/* แสงวิ่งผ่านรูป */
-
-.photo-inner::after{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:-120%;
-
-    width:70%;
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.20),
-            transparent
-        );
-
-    transform:skewX(-20deg);
-
-    animation:photoShine 5s infinite;
-}
-
-@keyframes photoShine{
-
-    0%{
-        left:-120%;
-    }
-
-    55%{
-        left:-120%;
-    }
-
-    75%{
-        left:130%;
-    }
-
-    100%{
-        left:130%;
-    }
-}
-
-/* สัญลักษณ์เสาหิน */
-
-.gyomei-mark{
-    position:absolute;
-
-    right:-25px;
-    bottom:-25px;
-
-    width:95px;
-    height:95px;
-
-    border-radius:50%;
-
-    display:grid;
-    place-items:center;
-
-    background:#071426;
-
-    border:2px solid var(--gold);
-
-    color:var(--gold2);
-
-    font-family:'Noto Serif JP',serif;
-
-    font-size:36px;
-
-    box-shadow:
-        0 0 35px
-        rgba(214,169,61,.18);
-}
-
-/* =========================
-   SECTIONS
-========================= */
-
-section{
-    padding:110px 7%;
-
-    position:relative;
-}
-
-.section-title{
-    margin-bottom:50px;
-}
-
-.section-title small{
-    color:var(--gold2);
-    letter-spacing:4px;
-}
-
-.section-title h2{
-    font-family:'Noto Serif JP',serif;
-
-    font-size:
-        clamp(
-            35px,
-            5vw,
-            56px
-        );
-
-    margin-top:8px;
-}
-
-.section-title h2 span{
-    color:var(--blue2);
-}
-
-.section-line{
-    width:90px;
-    height:3px;
-
-    margin-top:15px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold),
-            transparent
-        );
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.info-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:20px;
-}
-
-.card{
-    position:relative;
-
-    padding:32px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(21,52,91,.75),
-            rgba(5,16,29,.9)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    overflow:hidden;
-
-    transition:.4s;
-}
-
-.card::before{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:0;
-
-    width:80px;
-    height:3px;
-
-    background:var(--gold);
-}
-
-.card:hover{
-    transform:translateY(-8px);
-
-    border-color:
-        rgba(214,169,61,.45);
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.25);
-}
-
-.card-icon{
-    color:var(--gold2);
-
-    font-family:'Noto Serif JP',serif;
-
-    font-size:34px;
-
-    margin-bottom:17px;
-}
-
-.card h3{
-    font-size:21px;
-
-    margin-bottom:18px;
-}
-
-.card p{
-    color:#b1bfd0;
-
-    line-height:1.95;
-}
-
-.contact-item{
-    margin-bottom:13px;
-}
-
-/* =========================
-   TIMELINE
-========================= */
-
-.timeline{
-    max-width:950px;
-
-    margin:auto;
-
-    position:relative;
-}
-
-.timeline::before{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    bottom:0;
-
-    left:22px;
-
-    width:2px;
-
-    background:
-        linear-gradient(
-            var(--gold),
-            var(--blue2),
-            transparent
-        );
-}
-
-.timeline-item{
-    position:relative;
-
-    padding-left:70px;
-
-    margin-bottom:52px;
-}
-
-.timeline-dot{
-    position:absolute;
-
-    top:3px;
-    left:12px;
-
-    width:22px;
-    height:22px;
-
-    border-radius:50%;
-
-    background:var(--navy);
-
-    border:
-        3px solid
-        var(--gold);
-
-    box-shadow:
-        0 0 20px
-        rgba(214,169,61,.35);
-}
-
-.timeline-year{
-    color:var(--gold2);
-
-    font-size:14px;
-
-    letter-spacing:2px;
-}
-
-.timeline h3{
-    font-family:'Noto Serif JP',serif;
-
-    font-size:25px;
-
-    margin:5px 0 8px;
-}
-
-.timeline p{
-    color:#aebdce;
-
-    line-height:1.8;
-}
-
-/* =========================
-   SKILLS
-========================= */
-
-.skills-grid{
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:25px;
-}
-
-.skill-box{
-    padding:32px;
-
-    background:
-        rgba(8,23,42,.82);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-}
-
-.skill-box h3{
-    font-family:'Noto Serif JP',serif;
-
-    margin-bottom:25px;
-
-    color:#fff;
-}
-
-.skill{
-    margin:23px 0;
-}
-
-.skill-head{
-    display:flex;
-
-    justify-content:space-between;
-
-    margin-bottom:9px;
-
-    font-size:14px;
-}
-
-.skill-head span:last-child{
-    color:var(--gold2);
-}
-
-.bar{
-    height:7px;
-
-    background:#182a42;
-
-    overflow:hidden;
-}
-
-.bar span{
-    display:block;
-
-    height:100%;
-
-    width:0;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--blue2),
-            var(--gold2)
-        );
-
-    transition:
-        width 1.8s
-        cubic-bezier(.22,.61,.36,1);
-}
-
-/* =========================
-   TAGS
-========================= */
-
-.tags{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-}
-
-.tag{
-    padding:12px 20px;
-
-    border:
-        1px solid
-        rgba(214,169,61,.35);
-
-    color:#dbe7f5;
-
-    background:
-        rgba(214,169,61,.035);
-
-    transition:.3s;
-}
-
-.tag:hover{
-    background:var(--gold);
-
-    color:#101010;
-
-    transform:
-        translateY(-4px)
-        rotate(-2deg);
-}
-
-/* =========================
-   QUOTE
-========================= */
-
-.quote{
-    padding:
-        125px
-        10%;
-
-    text-align:center;
-
-    background:
-        linear-gradient(
-            rgba(4,13,25,.82),
-            rgba(4,13,25,.96)
-        ),
-        radial-gradient(
-            circle,
-            var(--blue),
-            transparent 60%
-        );
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.08);
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.08);
-}
-
-.quote-mark{
-    font-family:'Noto Serif JP',serif;
-
-    color:var(--gold);
-
-    font-size:80px;
-
-    line-height:.5;
-}
-
-.quote h2{
-    font-family:'Zen Kurenaido',sans-serif;
-
-    font-size:
-        clamp(
-            31px,
-            5vw,
-            56px
-        );
-
-    max-width:950px;
-
-    margin:
-        28px
-        auto;
-}
-
-.quote p{
-    color:#8999ad;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    text-align:center;
-
-    padding:45px 7%;
-
-    color:#63748a;
-
-    font-size:13px;
-}
-
-footer strong{
-    color:var(--gold2);
-}
-
-/* =========================
-   SCROLL REVEAL
-========================= */
-
-.reveal{
-    opacity:0;
-
-    transform:
-        translateY(45px);
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
-}
-
-.reveal.active{
-    opacity:1;
-
-    transform:
-        translateY(0);
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:850px){
-
-    nav{
-        padding:15px 5%;
-    }
-
-    nav ul{
-        display:none;
-    }
-
-    .hero{
-        grid-template-columns:1fr;
-
-        padding:
-            125px
-            6%
-            80px;
-
-        text-align:center;
-
-        gap:55px;
-    }
-
-    .hero-content{
-        order:2;
-    }
-
-    .hero-photo{
-        order:1;
-    }
-
-    .hero-description{
-        margin:auto;
-    }
-
-    .buttons{
-        justify-content:center;
-    }
-
-    .japanese-bg{
-        display:none;
-    }
-
-    .photo-frame{
-        width:min(350px,85vw);
-    }
-
-    .info-grid{
-        grid-template-columns:1fr;
-    }
-
-    .skills-grid{
-        grid-template-columns:1fr;
-    }
-
-    section{
-        padding:80px 6%;
-    }
-
-    .section-title{
-        text-align:center;
-    }
-
-    .section-line{
-        margin:
-            15px
-            auto;
-    }
-}
-
-/* =========================
-   SMALL MOBILE
-========================= */
-
-@media(max-width:500px){
-
-    nav .logo{
-        font-size:16px;
-    }
-
-    .hero h1{
-        font-size:40px;
-    }
-
-    .name-en{
-        font-size:24px;
-    }
-
-    .hero-description{
-        font-size:14px;
-    }
-
-    .photo-frame{
-        width:290px;
-    }
-
-    .gyomei-mark{
-        width:72px;
-        height:72px;
-
-        right:-12px;
-        bottom:-15px;
-
-        font-size:27px;
-    }
-
-    .card,
-    .skill-box{
-        padding:23px;
-    }
-
-    .timeline-item{
-        padding-left:55px;
-    }
-
-    .timeline::before{
-        left:16px;
-    }
-
-    .timeline-dot{
-        left:6px;
-    }
-
-    .timeline h3{
-        font-size:21px;
-    }
-
-    .tag{
-        padding:10px 15px;
-        font-size:13px;
-    }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นายวงศพัทธ์ เข้มแข็ง - Resume</title>
+    <!-- Google Fonts for Japanese Calligraphy & Thai Aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Prompt:wght@300;400;600;700&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #121510;
+            --bg-card: #1c221a;
+            --accent-stone: #8c8275;
+            --accent-gyomei: #2b4c3f; /* Deep Olive / Stone Green */
+            --accent-gold: #d4af37;
+            --accent-beads: #a83232; /* Prayer beads red */
+            --text-light: #f0f0ed;
+            --text-muted: #a3a89e;
+            --border-glow: #4a5d4e;
+            --font-jp: 'Yuji Syuku', serif;
+            --font-th: 'Prompt', sans-serif;
+            --font-body: 'Sarabun', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(43, 76, 63, 0.15) 0%, transparent 80%),
+                linear-gradient(rgba(18, 21, 16, 0.95), rgba(18, 21, 16, 0.95)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="10" y="50" fill="rgba(255,255,255,0.02)" font-size="40">南無阿彌陀佛</text></svg>');
+            background-attachment: fixed;
+        }
+
+        /* Japanese Kanro / Kanji Overlay background elements */
+        .kanji-bg {
+            position: fixed;
+            font-family: var(--font-jp);
+            font-size: 15rem;
+            color: rgba(212, 175, 55, 0.02);
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            writing-mode: vertical-rl;
+        }
+        .kanji-left { left: 2%; top: 10%; }
+        .kanji-right { right: 2%; bottom: 10%; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding: 2rem 1rem;
+            background: linear-gradient(180deg, rgba(43, 76, 63, 0.3) 0%, rgba(28, 34, 26, 0.8) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .japanese-title {
+            font-family: var(--font-jp);
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .profile-container {
+                flex-direction: row;
+                text-align: left;
+                justify-content: center;
+                align-items: center;
+                gap: 3rem;
+            }
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            width: 180px;
+            height: 220px;
+            border-radius: 12px;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-beads), var(--accent-gyomei));
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            background-color: #222;
+        }
+
+        .profile-text h1 {
+            font-family: var(--font-th);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.2rem;
+            letter-spacing: 1px;
+        }
+
+        .profile-text .subtitle {
+            font-family: var(--font-jp);
+            font-size: 1.2rem;
+            color: var(--accent-stone);
+            margin-bottom: 1rem;
+        }
+
+        .motto-box {
+            background: rgba(168, 50, 50, 0.15);
+            border-left: 4px solid var(--accent-beads);
+            padding: 0.8rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #e2e2e2;
+            margin-top: 0.8rem;
+            display: inline-block;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+        }
+
+        @media (min-width: 850px) {
+            .grid {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+
+        /* Card Component */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(140, 130, 117, 0.2);
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-gold);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-beads), var(--accent-gyomei));
+        }
+
+        /* Section Title */
+        .section-title {
+            font-family: var(--font-th);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title i {
+            color: var(--accent-beads);
+        }
+
+        /* Contact Info List */
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-list i {
+            width: 28px;
+            height: 28px;
+            background: rgba(43, 76, 63, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+        }
+
+        /* Info List */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .info-item label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .info-item span {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* Timeline / Education */
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid rgba(43, 76, 63, 0.6);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.95rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: 3px solid var(--bg-card);
+        }
+
+        .timeline-year {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .timeline-sub {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Skills Tags & Progress */
+        .skill-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-gyomei), var(--accent-gold));
+            border-radius: 4px;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(43, 76, 63, 0.3);
+            border: 1px solid var(--border-glow);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #e0e0e0;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background: var(--accent-gyomei);
+            color: #fff;
+            border-color: var(--accent-gold);
+        }
+
+        .hobby-tag {
+            background: rgba(168, 50, 50, 0.2);
+            border-color: rgba(168, 50, 50, 0.4);
+        }
+
+        .hobby-tag:hover {
+            background: var(--accent-beads);
+        }
+
+        /* Japanese Calligraphy Quote / Gyomei Seal */
+        .gyomei-quote {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--accent-gold);
+            border-radius: 12px;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .gyomei-quote p {
+            font-family: var(--font-jp);
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+        }
+
+        .gyomei-quote sub {
+            display: block;
+            margin-top: 0.5rem;
+            font-family: var(--font-th);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0 1rem 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 3rem;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- =========================
-     LOADING
-========================= -->
+    <div class="kanji-bg kanji-left">南無阿彌陀佛</div>
+    <div class="kanji-bg kanji-right">岩柱 悲鳴嶼 行冥</div>
 
-<div class="loader" id="loader">
-
-    <div class="loader-symbol">
-        岩
-    </div>
-
-    <div class="loader-text">
-        กำลังเปิดแฟ้มประวัติ...
-    </div>
-
-</div>
-
-
-<div class="mist one"></div>
-<div class="mist two"></div>
-
-
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<nav>
-
-    <div class="logo">
-        岩柱 <span>• RESUME</span>
-    </div>
-
-    <ul>
-
-        <li>
-            <a href="#about">
-                เกี่ยวกับ
-            </a>
-        </li>
-
-        <li>
-            <a href="#education">
-                การศึกษา
-            </a>
-        </li>
-
-        <li>
-            <a href="#skills">
-                ทักษะ
-            </a>
-        </li>
-
-        <li>
-            <a href="#contact">
-                ติดต่อ
-            </a>
-        </li>
-
-    </ul>
-
-</nav>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<header class="hero">
-
-    <div class="hero-content">
-
-        <div class="japanese-bg">
-            覚悟
-        </div>
-
-        <div class="kicker">
-            RESUME / PORTFOLIO
-        </div>
-
-        <h1>
-            นายวงศพัทธ์<br>
-            เข้มแข็ง
-        </h1>
-
-        <div class="name-en">
-            Wongsapat Khemkhaeng
-        </div>
-
-        <p class="hero-description">
-
-            นักศึกษาระดับปริญญาตรีสายวิศวกรรมไฟฟ้า
-            ผู้มีความตั้งใจในการเรียนรู้และพัฒนาตนเอง
-            สามารถทำงานร่วมกับผู้อื่นได้ดี มีความรับผิดชอบ
-            และพร้อมนำความรู้ไปประยุกต์ใช้กับการทำงานจริง
-
-        </p>
-
-        <div class="buttons">
-
-            <a
-                href="#about"
-                class="btn primary"
-            >
-                ดูประวัติ
-            </a>
-
-            <a
-                href="#contact"
-                class="btn gold"
-            >
-                ติดต่อผม
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         PROFILE IMAGE
-
-         ใช้รูปล่าสุด:
-         พีทท.jpg
-    ========================= -->
-
-    <div class="hero-photo">
-
-        <div class="photo-frame">
-
-            <div class="photo-inner">
-
-                <img
-                    src="พีทท.jpg"
-                    alt="นายวงศพัทธ์ เข้มแข็ง"
-                >
-
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="japanese-title">岩の呼吸 • 悲鳴嶼行冥 スタイル</div>
+            <div class="profile-container">
+                <div class="profile-img-wrapper">
+                    <div class='profile-img' style='display:flex;align-items:center;justify-content:center;color:#aaa;'>NO PHOTO</div>
+                </div>
+                <div class="profile-text">
+                    <h1>นายวงศพัทธ์ เข้มแข็ง</h1>
+                    <div class="subtitle">Wongsapat Khemkhaeng (พีช / Peach)</div>
+                    <div class="info-grid" style="margin-bottom: 0.8rem;">
+                        <div class="info-item">
+                            <label>อายุ</label>
+                            <span>21 ปี (16 เม.ย. 2548)</span>
+                        </div>
+                        <div class="info-item">
+                            <label>สัญชาติ / ศาสนา</label>
+                            <span>ไทย / พุทธ</span>
+                        </div>
+                    </div>
+                    <div class="motto-box">
+                        <i class="fa-solid => fa-quote-left" style="margin-right: 5px; color: var(--accent-gold);"></i>
+                        "เราจะเติบโต จากจุดเริ่มต้นของเรา"
+                    </div>
+                </div>
             </div>
-
-        </div>
-
-        <div class="gyomei-mark">
-            岩
-        </div>
-
-    </div>
-
-</header>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section id="about">
-
-    <div class="section-title reveal">
-
-        <small>
-            01 / ABOUT ME
-        </small>
-
-        <h2>
-            ข้อมูล<span>ส่วนตัว</span>
-        </h2>
-
-        <div class="section-line"></div>
-
-    </div>
-
-
-    <div class="info-grid">
-
-
-        <!-- PERSONAL -->
-
-        <div class="card reveal">
-
-            <div class="card-icon">
-                人
-            </div>
-
-            <h3>
-                ข้อมูลส่วนตัว
-            </h3>
-
-            <p>
-
-                <strong>ชื่อเล่น:</strong>
-                พีท
-                <br>
-
-                <strong>วันเกิด:</strong>
-                16 เมษายน 2005
-                <br>
-
-                <strong>อายุ:</strong>
-                21 ปี
-                <br>
-
-                <strong>สัญชาติ:</strong>
-                ไทย
-                <br>
-
-                <strong>ศาสนา:</strong>
-                พุทธ
-
-            </p>
-
-        </div>
-
-
-        <!-- STRENGTH -->
-
-        <div class="card reveal">
-
-            <div class="card-icon">
-                力
-            </div>
-
-            <h3>
-                จุดแข็ง
-            </h3>
-
-            <p>
-
-                มีความรับผิดชอบ
-                <br>
-
-                ทำงานร่วมกับผู้อื่นได้ดี
-                <br>
-
-                เรียนรู้สิ่งใหม่ได้รวดเร็ว
-                <br>
-
-                มีความคิดสร้างสรรค์
-                <br>
-
-                พร้อมพัฒนาตนเองอยู่เสมอ
-
-            </p>
-
-        </div>
-
-
-        <!-- CONTACT -->
-
-        <div
-            class="card reveal"
-            id="contact"
-        >
-
-            <div class="card-icon">
-                文
-            </div>
-
-            <h3>
-                ช่องทางติดต่อ
-            </h3>
-
-            <p class="contact-item">
-
-                <strong>
-                    โทรศัพท์
-                </strong>
-
-                <br>
-
-                063-171-2478
-
-            </p>
-
-            <p class="contact-item">
-
-                <strong>
-                    Email
-                </strong>
-
-                <br>
-
-                nittiya2988@gmail.com
-
-            </p>
-
-            <p>
-
-                <strong>
-                    ที่อยู่
-                </strong>
-
-                <br>
-
-                อำเภอท่ามะกา
-                จังหวัดกาญจนบุรี
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     EDUCATION
-========================= -->
-
-<section id="education">
-
-    <div class="section-title reveal">
-
-        <small>
-            02 / EDUCATION
-        </small>
-
-        <h2>
-            ประวัติ<span>การศึกษา</span>
-        </h2>
-
-        <div class="section-line"></div>
-
-    </div>
-
-
-    <div class="timeline">
-
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2550 – 2562
-            </div>
-
-            <h3>
-                โรงเรียนธีรศาสตร์
-            </h3>
-
-            <p>
-                ระดับอนุบาล – มัธยมศึกษาปีที่ 3
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2563 – 2565
-            </div>
-
-            <h3>
-                วิทยาลัยเทคโนโลยีดอนบอสโก บ้านโป่ง
-            </h3>
-
-            <p>
-
-                ประกาศนียบัตรวิชาชีพ (ปวช.)
-                <br>
-
-                แผนกวิชาไฟฟ้ากำลัง
-
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2566 – 2567
-            </div>
-
-            <h3>
-                วิทยาลัยเทคโนโลยีดอนบอสโก บ้านโป่ง
-            </h3>
-
-            <p>
-
-                ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)
-                <br>
-
-                สาขาวิชาช่างไฟฟ้า
-
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-dot"></div>
-
-            <div class="timeline-year">
-                2568 – ปัจจุบัน
-            </div>
-
-            <h3>
-                มหาวิทยาลัยธนบุรี
-            </h3>
-
-            <p>
-                ระดับปริญญาตรี
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     SKILLS
-========================= -->
-
-<section id="skills">
-
-    <div class="section-title reveal">
-
-        <small>
-            03 / SKILLS
-        </small>
-
-        <h2>
-            ทักษะ<span>ความสามารถ</span>
-        </h2>
-
-        <div class="section-line"></div>
-
-    </div>
-
-
-    <div class="skills-grid">
-
-
-        <!-- TECHNICAL -->
-
-        <div class="skill-box reveal">
-
-            <h3>
-                Technical Skills
-            </h3>
-
-
-            <div class="skill">
-
-                <div class="skill-head">
-
-                    <span>
-                        Microsoft Office
-                    </span>
-
-                    <span>
-                        85%
-                    </span>
-
+        </header>
+
+        <!-- Main Layout -->
+        <div class="grid">
+            <!-- Left Column: Personal Info & Contact & Languages -->
+            <div style="display: flex; flex-direction: column; gap: 1.8rem;">
+                
+                <!-- Contact Card -->
+                <div class="card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-address-book"></i> การติดต่อ (Contact)
+                    </div>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <span>063-171-2478</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>nittiya2988@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>อ.ท่ามะกา จ.กาญจนบุรี</span>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="bar">
+                <!-- Languages Card -->
+                <div class="card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-language"></i> ทักษะภาษา (Languages)
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-name">
+                            <span>ภาษาไทย (Thai)</span>
+                            <span style="color: var(--accent-gold);">ระดับดีมาก</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-name">
+                            <span>ภาษาอังกฤษ (English)</span>
+                            <span style="color: var(--accent-gold);">ระดับดี</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
 
-                    <span
-                        data-width="85%"
-                    ></span>
-
+                <!-- Hobbies Card -->
+                <div class="card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-gamepad"></i> งานอดิเรก (Hobbies)
+                    </div>
+                    <div class="tag-cloud">
+                        <span class="tag hobby-tag"><i class="fa-solid fa-utensils"></i> ทำอาหาร</span>
+                        <span class="tag hobby-tag"><i class="fa-solid fa-music"></i> ฟังเพลง</span>
+                        <span class="tag hobby-tag"><i class="fa-solid fa-guitar"></i> เล่นกีตาร์</span>
+                        <span class="tag hobby-tag"><i class="fa-solid fa-cube"></i> Roblox</span>
+                        <span class="tag hobby-tag"><i class="fa-solid fa-crosshairs"></i> Valorant</span>
+                        <span class="tag hobby-tag"><i class="fa-solid fa-mobile-screen"></i> ROV</span>
+                    </div>
                 </div>
 
             </div>
 
-
-            <div class="skill">
-
-                <div class="skill-head">
-
-                    <span>
-                        Canva
-                    </span>
-
-                    <span>
-                        85%
-                    </span>
-
+            <!-- Right Column: Education, Work Skills, Software Skills -->
+            <div style="display: flex; flex-direction: column; gap: 1.8rem;">
+                
+                <!-- Education Card -->
+                <div class="card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-graduation-cap"></i> ประวัติการศึกษา (Education)
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2568 - ปัจจุบัน</div>
+                            <div class="timeline-title">มหาวิทยาลัยธนบุรี</div>
+                            <div class="timeline-sub">ระดับปริญญาตรี</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2566 - 2567</div>
+                            <div class="timeline-title">วิทยาลัยเทคโนโลยีดอนบอสโก บ้านโป่ง</div>
+                            <div class="timeline-sub">ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.) สาขาวิชาช่างไฟฟ้า</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2563 - 2565</div>
+                            <div class="timeline-title">วิทยาลัยเทคโนโลยีดอนบอสโก บ้านโป่ง</div>
+                            <div class="timeline-sub">ประกาศนียบัตรวิชาชีพ (ปวช.) แผนกวิชาไฟฟ้ากำลัง</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2550 - 2562</div>
+                            <div class="timeline-title">โรงเรียนธีรศาสตร์</div>
+                            <div class="timeline-sub">ระดับอนุบาล - มัธยมศึกษาปีที่ 3</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bar">
+                <!-- Work & Core Skills -->
+                <div class="card">
+                    <div class="section-title">
+                        <i class="fa-solid fa-briefcase"></i> ทักษะการทำงานและการบริหาร (Professional Skills)
+                    </div>
+                    <div class="tag-cloud" style="margin-bottom: 1.5rem;">
+                        <span class="tag"><i class="fa-solid fa-store"></i> การบริหารร้านอาหารขนาดเล็ก</span>
+                        <span class="tag"><i class="fa-solid fa-users"></i> การทำงานร่วมกันเป็นทีม</span>
+                        <span class="tag"><i class="fa-solid fa-chess"></i> การคิดเชิงกลยุทธ์</span>
+                        <span class="tag"><i class="fa-solid fa-bowl-food"></i> ศิลปะการประกอบอาหาร</span>
+                        <span class="tag"><i class="fa-solid fa-list-check"></i> การบริหารจัดการ</span>
+                    </div>
 
-                    <span
-                        data-width="85%"
-                    ></span>
-
+                    <div class="section-title" style="font-size: 1.1rem; border: none; padding-bottom: 0;">
+                        <i class="fa-solid fa-laptop-code"></i> เครื่องมือและโปรแกรม (Software & Tools)
+                    </div>
+                    <div class="tag-cloud" style="margin-top: 0.8rem;">
+                        <span class="tag"><i class="fa-file-word"></i> Microsoft Office</span>
+                        <span class="tag"><i class="fa-solid fa-palette"></i> Canva</span>
+                        <span class="tag"><i class="fa-solid fa-video"></i> CapCut</span>
+                        <span class="tag"><i class="fa-brands fa-tiktok"></i> TikTok</span>
+                    </div>
                 </div>
 
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-head">
-
-                    <span>
-                        CapCut
-                    </span>
-
-                    <span>
-                        75%
-                    </span>
-
-                </div>
-
-                <div class="bar">
-
-                    <span
-                        data-width="75%"
-                    ></span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-head">
-
-                    <span>
-                        การทำงานเป็นทีม
-                    </span>
-
-                    <span>
-                        90%
-                    </span>
-
-                </div>
-
-                <div class="bar">
-
-                    <span
-                        data-width="90%"
-                    ></span>
-
+                <!-- Theme Accent Banner -->
+                <div class="gyomei-quote">
+                    <p>南無阿彌陀佛 • 石の呼吸</p>
+                    <sub>"ความแข็งแกร่งดั่งหินผา มุ่งมั่นและเติบโตในทุกเส้นทาง" - สไตล์ Gyomei Himejima Theme</sub>
                 </div>
 
             </div>
-
         </div>
 
-
-        <!-- LANGUAGES -->
-
-        <div class="skill-box reveal">
-
-            <h3>
-                Languages & Management
-            </h3>
-
-
-            <div class="skill">
-
-                <div class="skill-head">
-
-                    <span>
-                        ภาษาไทย
-                    </span>
-
-                    <span>
-                        ดีมาก
-                    </span>
-
-                </div>
-
-                <div class="bar">
-
-                    <span
-                        data-width="95%"
-                    ></span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-head">
-
-                    <span>
-                        ภาษาอังกฤษ
-                    </span>
-
-                    <span>
-                        ดี
-                    </span>
-
-                </div>
-
-                <div class="bar">
-
-                    <span
-                        data-width="70%"
-                    ></span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-head">
-
-                    <span>
-                        บริหารจัดการ
-                    </span>
-
-                    <span>
-                        80%
-                    </span>
-
-                </div>
-
-                <div class="bar">
-
-                    <span
-                        data-width="80%"
-                    ></span>
-
-                </div>
-
-            </div>
-
-        </div>
-
+        <footer>
+            <p>© 2026 นายวงศพัทธ์ เข้มแข็ง - Responsive Web Resume (Gyomei Demon Slayer Theme)</p>
+        </footer>
     </div>
-
-</section>
-
-
-<!-- =========================
-     INTERESTS
-========================= -->
-
-<section>
-
-    <div class="section-title reveal">
-
-        <small>
-            04 / PERSONAL
-        </small>
-
-        <h2>
-            ความสนใจและ<span>กิจกรรม</span>
-        </h2>
-
-        <div class="section-line"></div>
-
-    </div>
-
-
-    <div class="card reveal">
-
-        <h3 style="margin-bottom:25px">
-
-            สิ่งที่ชอบและกิจกรรมยามว่าง
-
-        </h3>
-
-
-        <div class="tags">
-
-            <div class="tag">
-                ทำอาหาร
-            </div>
-
-            <div class="tag">
-                ฟังเพลง
-            </div>
-
-            <div class="tag">
-                เล่นกีตาร์
-            </div>
-
-            <div class="tag">
-                เล่น Roblox
-            </div>
-
-            <div class="tag">
-                เล่น Valorant
-            </div>
-
-            <div class="tag">
-                เล่น ROV
-            </div>
-
-            <div class="tag">
-                งานสร้างสรรค์
-            </div>
-
-            <div class="tag">
-                เรียนรู้เทคโนโลยี
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     QUOTE
-========================= -->
-
-<section class="quote">
-
-    <div class="quote-mark">
-        「
-    </div>
-
-    <h2>
-
-        เราจะเติบโตจากจุดเริ่มต้นของเรา
-        และก้าวต่อไปด้วยความพยายาม
-
-    </h2>
-
-    <p>
-
-        ความตั้งใจ • ความอดทน • การพัฒนาตัวเอง
-
-    </p>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-    <strong>
-        นายวงศพัทธ์ เข้มแข็ง
-    </strong>
-
-    <br>
-    <br>
-
-    Wongsapat Khemkhaeng
-    •
-    Resume 2026
-
-</footer>
-
-
-<script>
-
-/* =========================
-   LOADING SCREEN
-========================= */
-
-window.addEventListener(
-    "load",
-    function(){
-
-        setTimeout(
-            function(){
-
-                document
-                    .getElementById("loader")
-                    .classList
-                    .add("hide");
-
-            },
-            700
-        );
-
-    }
-);
-
-
-/* =========================
-   SCROLL REVEAL
-========================= */
-
-const observer =
-    new IntersectionObserver(
-
-        function(entries){
-
-            entries.forEach(
-                function(entry){
-
-                    if(
-                        entry.isIntersecting
-                    ){
-
-                        entry.target
-                            .classList
-                            .add("active");
-
-
-                        /* Skill Animation */
-
-                        const bars =
-                            entry.target
-                            .querySelectorAll(
-                                ".bar span"
-                            );
-
-                        bars.forEach(
-                            function(bar){
-
-                                bar.style.width =
-                                    bar.dataset.width;
-
-                            }
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-
-        {
-            threshold:.15
-        }
-
-    );
-
-
-document
-    .querySelectorAll(".reveal")
-    .forEach(
-        function(element){
-
-            observer.observe(
-                element
-            );
-
-        }
-    );
-
-
-/* =========================
-   PHOTO PARALLAX
-========================= */
-
-const photoFrame =
-    document.querySelector(
-        ".photo-frame"
-    );
-
-
-document.addEventListener(
-    "mousemove",
-    function(event){
-
-        if(
-            window.innerWidth < 850
-        ){
-            return;
-        }
-
-
-        const x =
-            (
-                window.innerWidth / 2
-                -
-                event.clientX
-            ) / 70;
-
-
-        const y =
-            (
-                window.innerHeight / 2
-                -
-                event.clientY
-            ) / 70;
-
-
-        photoFrame.style.transform =
-            `
-            rotateY(${x}deg)
-            rotateX(${y}deg)
-            `;
-
-    }
-);
-
-
-document.addEventListener(
-    "mouseleave",
-    function(){
-
-        photoFrame.style.transform =
-            "rotateY(0deg) rotateX(0deg)";
-
-    }
-);
-
-
-/* =========================
-   SMOOTH NAVIGATION
-========================= */
-
-document
-    .querySelectorAll("nav a")
-    .forEach(
-        function(link){
-
-            link.addEventListener(
-                "click",
-                function(){
-
-                    const target =
-                        document.querySelector(
-                            this.getAttribute(
-                                "href"
-                            )
-                        );
-
-                    if(target){
-
-                        target.scrollIntoView({
-                            behavior:"smooth"
-                        });
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-</script>
 
 </body>
 </html>
