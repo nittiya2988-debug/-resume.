@@ -6,23 +6,24 @@
 
 <title>นายวงศพัทธ์ เข้มแข็ง | Resume</title>
 
-<!-- Japanese / Thai fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Noto+Serif+JP:wght@400;600;700;900&family=Zen+Kurenaido&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-    --ink:#07111f;
-    --navy:#091b35;
-    --blue:#124f9e;
-    --blue2:#2875d6;
-    --gold:#d7a83d;
-    --gold2:#f5d77c;
+    --black:#050c16;
+    --navy:#081a31;
+    --navy2:#0d294d;
+    --blue:#1254a4;
+    --blue2:#2d7de1;
+    --gold:#d6a93d;
+    --gold2:#f3d77a;
     --white:#f7f9fc;
-    --mist:#dfe9f5;
-    --gray:#9eacbc;
-    --red:#a72c2c;
+    --gray:#aebdce;
+    --line:rgba(255,255,255,.10);
 }
 
 *{
@@ -37,27 +38,97 @@ html{
 
 body{
     font-family:'Noto Sans Thai',sans-serif;
-    background:
-        radial-gradient(circle at 20% 10%,rgba(40,117,214,.15),transparent 25%),
-        radial-gradient(circle at 90% 70%,rgba(215,168,61,.08),transparent 25%),
-        var(--ink);
     color:var(--white);
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(45,125,225,.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(214,169,61,.09),
+            transparent 25%
+        ),
+        var(--black);
     overflow-x:hidden;
 }
 
 /* =========================
-   LOADING SCREEN
+   BACKGROUND GRID
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:70px 70px;
+}
+
+/* =========================
+   MIST
+========================= */
+
+.mist{
+    position:fixed;
+    width:480px;
+    height:480px;
+    border-radius:50%;
+    background:rgba(255,255,255,.045);
+    filter:blur(90px);
+    pointer-events:none;
+    z-index:-1;
+    animation:mistMove 16s infinite alternate ease-in-out;
+}
+
+.mist.one{
+    top:5%;
+    left:-220px;
+}
+
+.mist.two{
+    right:-200px;
+    bottom:-100px;
+    animation-delay:4s;
+}
+
+@keyframes mistMove{
+    from{
+        transform:translate(0,0);
+    }
+
+    to{
+        transform:translate(130px,-60px);
+    }
+}
+
+/* =========================
+   LOADER
 ========================= */
 
 .loader{
     position:fixed;
     inset:0;
-    z-index:9999;
-    background:#050d18;
+    background:#030811;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    flex-direction:column;
+    z-index:9999;
     transition:1s;
 }
 
@@ -70,85 +141,66 @@ body{
     font-family:'Noto Serif JP',serif;
     font-size:90px;
     color:var(--gold2);
-    animation:pulse 1.5s infinite;
+    animation:loaderPulse 1.5s infinite;
 }
 
-.loader p{
-    letter-spacing:5px;
-    color:#fff;
+.loader-text{
+    margin-top:20px;
     font-size:13px;
+    letter-spacing:5px;
+    color:#d7e4f5;
 }
 
-@keyframes pulse{
-    0%,100%{transform:scale(1);opacity:.6}
-    50%{transform:scale(1.1);opacity:1}
-}
+@keyframes loaderPulse{
+    0%,100%{
+        transform:scale(1);
+        opacity:.55;
+    }
 
-/* =========================
-   BACKGROUND EFFECT
-========================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.08;
-    background-image:
-        linear-gradient(90deg,transparent 49%,#fff 50%,transparent 51%),
-        linear-gradient(0deg,transparent 49%,#fff 50%,transparent 51%);
-    background-size:70px 70px;
-    z-index:-1;
-}
-
-.mist{
-    position:fixed;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    background:rgba(255,255,255,.045);
-    filter:blur(80px);
-    pointer-events:none;
-    animation:floatMist 15s infinite alternate ease-in-out;
-}
-
-.mist.one{top:10%;left:-200px}
-.mist.two{bottom:-100px;right:-150px;animation-delay:4s}
-
-@keyframes floatMist{
-    from{transform:translate(0,0)}
-    to{transform:translate(120px,-50px)}
+    50%{
+        transform:scale(1.1);
+        opacity:1;
+    }
 }
 
 /* =========================
-   NAV
+   NAVBAR
 ========================= */
 
 nav{
     position:fixed;
     top:0;
+    left:0;
     width:100%;
     z-index:1000;
-    padding:18px 6%;
+
+    padding:17px 6%;
+
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    background:rgba(5,13,24,.72);
-    backdrop-filter:blur(14px);
+    justify-content:space-between;
+
+    background:rgba(4,11,21,.76);
+    backdrop-filter:blur(16px);
+
     border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
     font-family:'Noto Serif JP',serif;
     color:var(--gold2);
-    font-weight:900;
     font-size:20px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#fff;
 }
 
 nav ul{
     display:flex;
-    gap:28px;
     list-style:none;
+    gap:30px;
 }
 
 nav a{
@@ -161,11 +213,11 @@ nav a{
 nav a::after{
     content:"";
     position:absolute;
+    left:0;
+    bottom:-8px;
     width:0;
     height:2px;
-    bottom:-7px;
-    left:0;
-    background:var(--gold);
+    background:var(--gold2);
     transition:.3s;
 }
 
@@ -179,11 +231,18 @@ nav a:hover::after{
 
 .hero{
     min-height:100vh;
-    padding:130px 7% 80px;
+
+    padding:
+        140px
+        7%
+        80px;
+
     display:grid;
     grid-template-columns:1.1fr .9fr;
+
     align-items:center;
-    gap:50px;
+    gap:70px;
+
     position:relative;
 }
 
@@ -192,71 +251,110 @@ nav a:hover::after{
     z-index:2;
 }
 
-.japanese{
-    font-family:'Zen Kurenaido',sans-serif;
-    font-size:clamp(45px,8vw,110px);
-    line-height:.9;
-    color:rgba(255,255,255,.045);
+.japanese-bg{
     position:absolute;
-    top:-70px;
-    left:-20px;
+    top:-90px;
+    left:-30px;
+
+    font-family:'Zen Kurenaido',sans-serif;
+
+    font-size:clamp(
+        80px,
+        12vw,
+        170px
+    );
+
+    color:rgba(255,255,255,.035);
+
     writing-mode:vertical-rl;
-    z-index:-1;
+
+    pointer-events:none;
 }
 
 .kicker{
     color:var(--gold2);
-    letter-spacing:5px;
     font-size:13px;
+    letter-spacing:5px;
     margin-bottom:18px;
 }
 
-h1{
+.hero h1{
     font-family:'Noto Serif JP',serif;
-    font-size:clamp(42px,6vw,82px);
-    line-height:1.1;
-    margin-bottom:12px;
+
+    font-size:
+        clamp(
+            43px,
+            6vw,
+            82px
+        );
+
+    line-height:1.12;
+
+    margin-bottom:8px;
 }
 
 .name-en{
     font-family:'Zen Kurenaido',sans-serif;
-    font-size:clamp(23px,3vw,38px);
-    color:#aac9ee;
+
+    color:#9fc7f6;
+
+    font-size:
+        clamp(
+            24px,
+            3vw,
+            38px
+        );
+
     letter-spacing:2px;
-    margin-bottom:25px;
+
+    margin-bottom:28px;
 }
 
 .hero-description{
-    max-width:620px;
-    color:#bdc9d8;
+    max-width:650px;
+
+    color:#b7c5d5;
+
     line-height:2;
+
     font-size:16px;
 }
 
 .buttons{
     display:flex;
     gap:15px;
+
     margin-top:32px;
+
     flex-wrap:wrap;
 }
 
 .btn{
     display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-width:145px;
+
     padding:13px 25px;
-    border-radius:3px;
+
     text-decoration:none;
-    color:white;
+
+    color:#fff;
+
     border:1px solid var(--blue2);
-    transition:.3s;
+
+    transition:.35s;
 }
 
 .btn.primary{
-    background:linear-gradient(135deg,var(--blue),#082c60);
-}
-
-.btn:hover{
-    transform:translateY(-4px);
-    box-shadow:0 12px 35px rgba(30,100,210,.25);
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue),
+            #092c5b
+        );
 }
 
 .btn.gold{
@@ -264,87 +362,164 @@ h1{
     color:var(--gold2);
 }
 
+.btn:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 14px 35px
+        rgba(24,104,214,.25);
+}
+
 /* =========================
    PROFILE PHOTO
 ========================= */
 
 .hero-photo{
-    position:relative;
     display:flex;
+    align-items:center;
     justify-content:center;
+
+    perspective:1000px;
+
+    position:relative;
 }
 
 .photo-frame{
-    width:min(420px,90vw);
+    width:min(430px,90vw);
+
     aspect-ratio:4/5;
-    position:relative;
-    padding:13px;
+
+    padding:11px;
+
     background:
-        linear-gradient(135deg,var(--gold),transparent 25%),
-        linear-gradient(315deg,var(--blue2),transparent 35%);
+        linear-gradient(
+            135deg,
+            var(--gold),
+            transparent 28%
+        ),
+        linear-gradient(
+            315deg,
+            var(--blue2),
+            transparent 35%
+        );
+
     clip-path:polygon(
-        8% 0,92% 0,
-        100% 8%,100% 92%,
-        92% 100%,8% 100%,
-        0 92%,0 8%
+        8% 0,
+        92% 0,
+        100% 8%,
+        100% 92%,
+        92% 100%,
+        8% 100%,
+        0 92%,
+        0 8%
     );
+
+    transition:.25s ease;
 }
 
 .photo-inner{
     width:100%;
     height:100%;
-    overflow:hidden;
-    background:#1671d9;
-    position:relative;
-}
 
-.photo-inner::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        135deg,
-        transparent 40%,
-        rgba(255,255,255,.13) 50%,
-        transparent 60%
-    );
-    animation:shine 4s infinite;
+    overflow:hidden;
+
+    background:#2d7de1;
+
+    position:relative;
 }
 
 .photo-inner img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
+    display:block;
 }
 
-@keyframes shine{
-    0%,50%{transform:translateX(-120%)}
-    80%,100%{transform:translateX(120%)}
+/* แสงวิ่งผ่านรูป */
+
+.photo-inner::after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:70%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.20),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:photoShine 5s infinite;
 }
+
+@keyframes photoShine{
+
+    0%{
+        left:-120%;
+    }
+
+    55%{
+        left:-120%;
+    }
+
+    75%{
+        left:130%;
+    }
+
+    100%{
+        left:130%;
+    }
+}
+
+/* สัญลักษณ์เสาหิน */
 
 .gyomei-mark{
     position:absolute;
-    bottom:-25px;
+
     right:-25px;
+    bottom:-25px;
+
     width:95px;
     height:95px;
+
     border-radius:50%;
-    border:2px solid var(--gold);
+
     display:grid;
     place-items:center;
-    background:#081426;
+
+    background:#071426;
+
+    border:2px solid var(--gold);
+
     color:var(--gold2);
+
     font-family:'Noto Serif JP',serif;
-    font-size:35px;
-    box-shadow:0 0 30px rgba(215,168,61,.18);
+
+    font-size:36px;
+
+    box-shadow:
+        0 0 35px
+        rgba(214,169,61,.18);
 }
 
 /* =========================
-   SECTION
+   SECTIONS
 ========================= */
 
 section{
     padding:110px 7%;
+
     position:relative;
 }
 
@@ -359,8 +534,15 @@ section{
 
 .section-title h2{
     font-family:'Noto Serif JP',serif;
-    font-size:clamp(34px,5vw,55px);
-    margin-top:7px;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            56px
+        );
+
+    margin-top:8px;
 }
 
 .section-title h2 span{
@@ -370,128 +552,184 @@ section{
 .section-line{
     width:90px;
     height:3px;
-    background:linear-gradient(90deg,var(--gold),transparent);
+
     margin-top:15px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
 }
 
 /* =========================
-   ABOUT CARDS
+   CARDS
 ========================= */
 
 .info-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:20px;
 }
 
 .card{
-    padding:30px;
-    background:linear-gradient(
-        145deg,
-        rgba(24,54,92,.75),
-        rgba(6,17,31,.85)
-    );
-    border:1px solid rgba(255,255,255,.09);
     position:relative;
+
+    padding:32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(21,52,91,.75),
+            rgba(5,16,29,.9)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
     overflow:hidden;
+
     transition:.4s;
 }
 
 .card::before{
     content:"";
+
     position:absolute;
-    width:80px;
-    height:3px;
+
     top:0;
     left:0;
+
+    width:80px;
+    height:3px;
+
     background:var(--gold);
 }
 
 .card:hover{
     transform:translateY(-8px);
-    border-color:rgba(215,168,61,.45);
+
+    border-color:
+        rgba(214,169,61,.45);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.25);
 }
 
 .card-icon{
-    font-size:30px;
     color:var(--gold2);
-    margin-bottom:18px;
+
+    font-family:'Noto Serif JP',serif;
+
+    font-size:34px;
+
+    margin-bottom:17px;
 }
 
 .card h3{
+    font-size:21px;
+
     margin-bottom:18px;
-    font-size:20px;
 }
 
 .card p{
-    color:#aebdce;
-    line-height:1.9;
+    color:#b1bfd0;
+
+    line-height:1.95;
 }
 
 .contact-item{
-    margin-bottom:12px;
-}
-
-.contact-item strong{
-    color:#fff;
+    margin-bottom:13px;
 }
 
 /* =========================
-   EDUCATION
+   TIMELINE
 ========================= */
 
 .timeline{
-    position:relative;
     max-width:950px;
+
     margin:auto;
+
+    position:relative;
 }
 
 .timeline::before{
     content:"";
+
     position:absolute;
-    left:22px;
+
     top:0;
     bottom:0;
+
+    left:22px;
+
     width:2px;
-    background:linear-gradient(
-        var(--gold),
-        var(--blue2),
-        transparent
-    );
+
+    background:
+        linear-gradient(
+            var(--gold),
+            var(--blue2),
+            transparent
+        );
 }
 
 .timeline-item{
     position:relative;
+
     padding-left:70px;
-    margin-bottom:50px;
+
+    margin-bottom:52px;
 }
 
 .timeline-dot{
     position:absolute;
+
+    top:3px;
     left:12px;
-    top:4px;
+
     width:22px;
     height:22px;
+
     border-radius:50%;
+
     background:var(--navy);
-    border:3px solid var(--gold);
-    box-shadow:0 0 18px rgba(215,168,61,.35);
+
+    border:
+        3px solid
+        var(--gold);
+
+    box-shadow:
+        0 0 20px
+        rgba(214,169,61,.35);
 }
 
 .timeline-year{
     color:var(--gold2);
+
     font-size:14px;
+
     letter-spacing:2px;
 }
 
 .timeline h3{
     font-family:'Noto Serif JP',serif;
+
     font-size:25px;
-    margin:5px 0;
+
+    margin:5px 0 8px;
 }
 
 .timeline p{
     color:#aebdce;
+
+    line-height:1.8;
 }
 
 /* =========================
@@ -500,62 +738,112 @@ section{
 
 .skills-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap:25px;
 }
 
 .skill-box{
-    padding:30px;
-    background:#09172a;
-    border:1px solid rgba(255,255,255,.08);
+    padding:32px;
+
+    background:
+        rgba(8,23,42,.82);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.skill-box h3{
+    font-family:'Noto Serif JP',serif;
+
+    margin-bottom:25px;
+
+    color:#fff;
 }
 
 .skill{
-    margin:22px 0;
+    margin:23px 0;
 }
 
 .skill-head{
     display:flex;
+
     justify-content:space-between;
+
     margin-bottom:9px;
+
+    font-size:14px;
+}
+
+.skill-head span:last-child{
+    color:var(--gold2);
 }
 
 .bar{
     height:7px;
-    background:#17283f;
+
+    background:#182a42;
+
     overflow:hidden;
 }
 
 .bar span{
     display:block;
+
     height:100%;
+
     width:0;
-    background:linear-gradient(90deg,var(--blue2),var(--gold2));
-    transition:2s ease;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue2),
+            var(--gold2)
+        );
+
+    transition:
+        width 1.8s
+        cubic-bezier(.22,.61,.36,1);
 }
 
 /* =========================
-   WORK / HOBBIES
+   TAGS
 ========================= */
 
 .tags{
     display:flex;
+
     flex-wrap:wrap;
+
     gap:12px;
 }
 
 .tag{
     padding:12px 20px;
-    border:1px solid rgba(215,168,61,.35);
-    color:#dce8f7;
-    background:rgba(215,168,61,.04);
+
+    border:
+        1px solid
+        rgba(214,169,61,.35);
+
+    color:#dbe7f5;
+
+    background:
+        rgba(214,169,61,.035);
+
     transition:.3s;
 }
 
 .tag:hover{
     background:var(--gold);
-    color:#111;
-    transform:rotate(-2deg) translateY(-3px);
+
+    color:#101010;
+
+    transform:
+        translateY(-4px)
+        rotate(-2deg);
 }
 
 /* =========================
@@ -563,31 +851,61 @@ section{
 ========================= */
 
 .quote{
+    padding:
+        125px
+        10%;
+
     text-align:center;
-    padding:120px 10%;
+
     background:
-        linear-gradient(rgba(4,13,25,.82),rgba(4,13,25,.95)),
-        radial-gradient(circle,var(--blue),transparent 60%);
-    border-top:1px solid rgba(255,255,255,.08);
-    border-bottom:1px solid rgba(255,255,255,.08);
+        linear-gradient(
+            rgba(4,13,25,.82),
+            rgba(4,13,25,.96)
+        ),
+        radial-gradient(
+            circle,
+            var(--blue),
+            transparent 60%
+        );
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
 }
 
 .quote-mark{
     font-family:'Noto Serif JP',serif;
-    font-size:80px;
+
     color:var(--gold);
-    line-height:.6;
+
+    font-size:80px;
+
+    line-height:.5;
 }
 
 .quote h2{
     font-family:'Zen Kurenaido',sans-serif;
-    font-size:clamp(30px,5vw,55px);
-    margin:25px auto;
-    max-width:900px;
+
+    font-size:
+        clamp(
+            31px,
+            5vw,
+            56px
+        );
+
+    max-width:950px;
+
+    margin:
+        28px
+        auto;
 }
 
 .quote p{
-    color:#9eacbc;
+    color:#8999ad;
 }
 
 /* =========================
@@ -595,9 +913,12 @@ section{
 ========================= */
 
 footer{
-    padding:45px 7%;
     text-align:center;
-    color:#68788d;
+
+    padding:45px 7%;
+
+    color:#63748a;
+
     font-size:13px;
 }
 
@@ -606,22 +927,29 @@ footer strong{
 }
 
 /* =========================
-   REVEAL
+   SCROLL REVEAL
 ========================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(40px);
-    transition:1s ease;
+
+    transform:
+        translateY(45px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
 }
 
 .reveal.active{
     opacity:1;
-    transform:none;
+
+    transform:
+        translateY(0);
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
 @media(max-width:850px){
@@ -636,8 +964,23 @@ footer strong{
 
     .hero{
         grid-template-columns:1fr;
-        padding-top:120px;
+
+        padding:
+            125px
+            6%
+            80px;
+
         text-align:center;
+
+        gap:55px;
+    }
+
+    .hero-content{
+        order:2;
+    }
+
+    .hero-photo{
+        order:1;
     }
 
     .hero-description{
@@ -648,15 +991,18 @@ footer strong{
         justify-content:center;
     }
 
-    .hero-photo{
-        order:-1;
+    .japanese-bg{
+        display:none;
     }
 
     .photo-frame{
-        width:min(330px,85vw);
+        width:min(350px,85vw);
     }
 
-    .info-grid,
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
     .skills-grid{
         grid-template-columns:1fr;
     }
@@ -670,17 +1016,23 @@ footer strong{
     }
 
     .section-line{
-        margin:15px auto;
-    }
-
-    .japanese{
-        display:none;
+        margin:
+            15px
+            auto;
     }
 }
 
+/* =========================
+   SMALL MOBILE
+========================= */
+
 @media(max-width:500px){
 
-    h1{
+    nav .logo{
+        font-size:16px;
+    }
+
+    .hero h1{
         font-size:40px;
     }
 
@@ -690,6 +1042,20 @@ footer strong{
 
     .hero-description{
         font-size:14px;
+    }
+
+    .photo-frame{
+        width:290px;
+    }
+
+    .gyomei-mark{
+        width:72px;
+        height:72px;
+
+        right:-12px;
+        bottom:-15px;
+
+        font-size:27px;
     }
 
     .card,
@@ -708,138 +1074,317 @@ footer strong{
     .timeline-dot{
         left:6px;
     }
+
+    .timeline h3{
+        font-size:21px;
+    }
+
+    .tag{
+        padding:10px 15px;
+        font-size:13px;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- =========================
+     LOADING
+========================= -->
+
 <div class="loader" id="loader">
-    <div class="loader-symbol">岩</div>
-    <p>กำลังเปิดแฟ้มประวัติ...</p>
+
+    <div class="loader-symbol">
+        岩
+    </div>
+
+    <div class="loader-text">
+        กำลังเปิดแฟ้มประวัติ...
+    </div>
+
 </div>
+
 
 <div class="mist one"></div>
 <div class="mist two"></div>
 
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav>
-    <div class="logo">岩柱 • RESUME</div>
+
+    <div class="logo">
+        岩柱 <span>• RESUME</span>
+    </div>
+
     <ul>
-        <li><a href="#about">เกี่ยวกับ</a></li>
-        <li><a href="#education">การศึกษา</a></li>
-        <li><a href="#skills">ทักษะ</a></li>
-        <li><a href="#contact">ติดต่อ</a></li>
+
+        <li>
+            <a href="#about">
+                เกี่ยวกับ
+            </a>
+        </li>
+
+        <li>
+            <a href="#education">
+                การศึกษา
+            </a>
+        </li>
+
+        <li>
+            <a href="#skills">
+                ทักษะ
+            </a>
+        </li>
+
+        <li>
+            <a href="#contact">
+                ติดต่อ
+            </a>
+        </li>
+
     </ul>
+
 </nav>
 
-<!-- HERO -->
+
+<!-- =========================
+     HERO
+========================= -->
+
 <header class="hero">
 
     <div class="hero-content">
 
-        <div class="japanese">覚悟</div>
+        <div class="japanese-bg">
+            覚悟
+        </div>
 
-        <div class="kicker">RESUME / PORTFOLIO</div>
+        <div class="kicker">
+            RESUME / PORTFOLIO
+        </div>
 
-        <h1>นายวงศพัทธ์<br>เข้มแข็ง</h1>
+        <h1>
+            นายวงศพัทธ์<br>
+            เข้มแข็ง
+        </h1>
 
         <div class="name-en">
             Wongsapat Khemkhaeng
         </div>
 
         <p class="hero-description">
-            นักศึกษาปริญญาตรีสายวิศวกรรมไฟฟ้า
-            ผู้มีความตั้งใจในการเรียนรู้และพัฒนาตัวเอง
+
+            นักศึกษาระดับปริญญาตรีสายวิศวกรรมไฟฟ้า
+            ผู้มีความตั้งใจในการเรียนรู้และพัฒนาตนเอง
             สามารถทำงานร่วมกับผู้อื่นได้ดี มีความรับผิดชอบ
             และพร้อมนำความรู้ไปประยุกต์ใช้กับการทำงานจริง
+
         </p>
 
         <div class="buttons">
-            <a class="btn primary" href="#about">
+
+            <a
+                href="#about"
+                class="btn primary"
+            >
                 ดูประวัติ
             </a>
 
-            <a class="btn gold" href="#contact">
+            <a
+                href="#contact"
+                class="btn gold"
+            >
                 ติดต่อผม
             </a>
+
         </div>
 
     </div>
 
+
+    <!-- =========================
+         PROFILE IMAGE
+
+         ใช้รูปล่าสุด:
+         พีทท.jpg
+    ========================= -->
+
     <div class="hero-photo">
 
         <div class="photo-frame">
+
             <div class="photo-inner">
 
-                <!-- เปลี่ยนชื่อไฟล์รูปตรงนี้ได้ -->
-                <img src="pppp.jpg"
-                     alt="รูปโปรไฟล์ Wongsapat Khemkhaeng">
+                <img
+                    src="พีทท.jpg"
+                    alt="นายวงศพัทธ์ เข้มแข็ง"
+                >
 
             </div>
+
         </div>
 
-        <div class="gyomei-mark">岩</div>
+        <div class="gyomei-mark">
+            岩
+        </div>
 
     </div>
 
 </header>
 
 
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
+
 <section id="about">
 
     <div class="section-title reveal">
-        <small>01 / ABOUT ME</small>
-        <h2>ข้อมูล<span>ส่วนตัว</span></h2>
+
+        <small>
+            01 / ABOUT ME
+        </small>
+
+        <h2>
+            ข้อมูล<span>ส่วนตัว</span>
+        </h2>
+
         <div class="section-line"></div>
+
     </div>
+
 
     <div class="info-grid">
 
+
+        <!-- PERSONAL -->
+
         <div class="card reveal">
-            <div class="card-icon">人</div>
-            <h3>ข้อมูลส่วนตัว</h3>
+
+            <div class="card-icon">
+                人
+            </div>
+
+            <h3>
+                ข้อมูลส่วนตัว
+            </h3>
 
             <p>
-                <strong>ชื่อเล่น:</strong> พีท<br>
-                <strong>วันเกิด:</strong> 16 เมษายน 2005<br>
-                <strong>อายุ:</strong> 21 ปี<br>
-                <strong>สัญชาติ:</strong> ไทย<br>
-                <strong>ศาสนา:</strong> พุทธ
+
+                <strong>ชื่อเล่น:</strong>
+                พีท
+                <br>
+
+                <strong>วันเกิด:</strong>
+                16 เมษายน 2005
+                <br>
+
+                <strong>อายุ:</strong>
+                21 ปี
+                <br>
+
+                <strong>สัญชาติ:</strong>
+                ไทย
+                <br>
+
+                <strong>ศาสนา:</strong>
+                พุทธ
+
             </p>
+
         </div>
 
+
+        <!-- STRENGTH -->
+
         <div class="card reveal">
-            <div class="card-icon">力</div>
-            <h3>จุดแข็ง</h3>
+
+            <div class="card-icon">
+                力
+            </div>
+
+            <h3>
+                จุดแข็ง
+            </h3>
 
             <p>
-                มีความรับผิดชอบ<br>
-                ทำงานร่วมกับผู้อื่นได้ดี<br>
-                เรียนรู้สิ่งใหม่ได้รวดเร็ว<br>
-                มีความคิดสร้างสรรค์<br>
+
+                มีความรับผิดชอบ
+                <br>
+
+                ทำงานร่วมกับผู้อื่นได้ดี
+                <br>
+
+                เรียนรู้สิ่งใหม่ได้รวดเร็ว
+                <br>
+
+                มีความคิดสร้างสรรค์
+                <br>
+
                 พร้อมพัฒนาตนเองอยู่เสมอ
+
             </p>
+
         </div>
 
-        <div class="card reveal" id="contact">
-            <div class="card-icon">文</div>
-            <h3>ช่องทางติดต่อ</h3>
+
+        <!-- CONTACT -->
+
+        <div
+            class="card reveal"
+            id="contact"
+        >
+
+            <div class="card-icon">
+                文
+            </div>
+
+            <h3>
+                ช่องทางติดต่อ
+            </h3>
 
             <p class="contact-item">
-                <strong>โทร:</strong><br>
+
+                <strong>
+                    โทรศัพท์
+                </strong>
+
+                <br>
+
                 063-171-2478
+
             </p>
 
             <p class="contact-item">
-                <strong>Email:</strong><br>
+
+                <strong>
+                    Email
+                </strong>
+
+                <br>
+
                 nittiya2988@gmail.com
+
             </p>
 
             <p>
-                <strong>ที่อยู่:</strong><br>
-                อำเภอท่ามะกา จังหวัดกาญจนบุรี
+
+                <strong>
+                    ที่อยู่
+                </strong>
+
+                <br>
+
+                อำเภอท่ามะกา
+                จังหวัดกาญจนบุรี
+
             </p>
+
         </div>
 
     </div>
@@ -847,165 +1392,337 @@ footer strong{
 </section>
 
 
-<!-- EDUCATION -->
+<!-- =========================
+     EDUCATION
+========================= -->
+
 <section id="education">
 
     <div class="section-title reveal">
-        <small>02 / EDUCATION</small>
-        <h2>ประวัติ<span>การศึกษา</span></h2>
+
+        <small>
+            02 / EDUCATION
+        </small>
+
+        <h2>
+            ประวัติ<span>การศึกษา</span>
+        </h2>
+
         <div class="section-line"></div>
+
     </div>
+
 
     <div class="timeline">
 
-        <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">2550 – 2562</div>
 
-            <h3>โรงเรียนธีรศาสตร์</h3>
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2550 – 2562
+            </div>
+
+            <h3>
+                โรงเรียนธีรศาสตร์
+            </h3>
 
             <p>
                 ระดับอนุบาล – มัธยมศึกษาปีที่ 3
             </p>
+
         </div>
 
-        <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">2563 – 2565</div>
 
-            <h3>วิทยาลัยเทคโนโลยีดอนบอสโก บ้านโป่ง</h3>
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2563 – 2565
+            </div>
+
+            <h3>
+                วิทยาลัยเทคโนโลยีดอนบอสโก บ้านโป่ง
+            </h3>
 
             <p>
-                ประกาศนียบัตรวิชาชีพ (ปวช.)<br>
+
+                ประกาศนียบัตรวิชาชีพ (ปวช.)
+                <br>
+
                 แผนกวิชาไฟฟ้ากำลัง
+
             </p>
+
         </div>
 
-        <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">2566 – 2567</div>
 
-            <h3>วิทยาลัยเทคโนโลยีดอนบอสโก บ้านโป่ง</h3>
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2566 – 2567
+            </div>
+
+            <h3>
+                วิทยาลัยเทคโนโลยีดอนบอสโก บ้านโป่ง
+            </h3>
 
             <p>
-                ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)<br>
+
+                ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)
+                <br>
+
                 สาขาวิชาช่างไฟฟ้า
+
             </p>
+
         </div>
 
-        <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">2568 – ปัจจุบัน</div>
 
-            <h3>มหาวิทยาลัยธนบุรี</h3>
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-year">
+                2568 – ปัจจุบัน
+            </div>
+
+            <h3>
+                มหาวิทยาลัยธนบุรี
+            </h3>
 
             <p>
                 ระดับปริญญาตรี
             </p>
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- SKILLS -->
+<!-- =========================
+     SKILLS
+========================= -->
+
 <section id="skills">
 
     <div class="section-title reveal">
-        <small>03 / SKILLS</small>
-        <h2>ทักษะ<span>ความสามารถ</span></h2>
+
+        <small>
+            03 / SKILLS
+        </small>
+
+        <h2>
+            ทักษะ<span>ความสามารถ</span>
+        </h2>
+
         <div class="section-line"></div>
+
     </div>
+
 
     <div class="skills-grid">
 
+
+        <!-- TECHNICAL -->
+
         <div class="skill-box reveal">
 
-            <h3>Technical Skills</h3>
+            <h3>
+                Technical Skills
+            </h3>
+
 
             <div class="skill">
+
                 <div class="skill-head">
-                    <span>Microsoft Office</span>
-                    <span>85%</span>
+
+                    <span>
+                        Microsoft Office
+                    </span>
+
+                    <span>
+                        85%
+                    </span>
+
                 </div>
+
                 <div class="bar">
-                    <span data-width="85%"></span>
+
+                    <span
+                        data-width="85%"
+                    ></span>
+
                 </div>
+
             </div>
 
-            <div class="skill">
-                <div class="skill-head">
-                    <span>Canva</span>
-                    <span>85%</span>
-                </div>
-                <div class="bar">
-                    <span data-width="85%"></span>
-                </div>
-            </div>
 
             <div class="skill">
+
                 <div class="skill-head">
-                    <span>CapCut</span>
-                    <span>75%</span>
+
+                    <span>
+                        Canva
+                    </span>
+
+                    <span>
+                        85%
+                    </span>
+
                 </div>
+
                 <div class="bar">
-                    <span data-width="75%"></span>
+
+                    <span
+                        data-width="85%"
+                    ></span>
+
                 </div>
+
             </div>
 
+
             <div class="skill">
+
                 <div class="skill-head">
-                    <span>การทำงานเป็นทีม</span>
-                    <span>90%</span>
+
+                    <span>
+                        CapCut
+                    </span>
+
+                    <span>
+                        75%
+                    </span>
+
                 </div>
+
                 <div class="bar">
-                    <span data-width="90%"></span>
+
+                    <span
+                        data-width="75%"
+                    ></span>
+
                 </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-head">
+
+                    <span>
+                        การทำงานเป็นทีม
+                    </span>
+
+                    <span>
+                        90%
+                    </span>
+
+                </div>
+
+                <div class="bar">
+
+                    <span
+                        data-width="90%"
+                    ></span>
+
+                </div>
+
             </div>
 
         </div>
 
 
+        <!-- LANGUAGES -->
+
         <div class="skill-box reveal">
 
-            <h3>Languages</h3>
+            <h3>
+                Languages & Management
+            </h3>
+
 
             <div class="skill">
+
                 <div class="skill-head">
-                    <span>ภาษาไทย</span>
-                    <span>ดีมาก</span>
+
+                    <span>
+                        ภาษาไทย
+                    </span>
+
+                    <span>
+                        ดีมาก
+                    </span>
+
                 </div>
 
                 <div class="bar">
-                    <span data-width="95%"></span>
+
+                    <span
+                        data-width="95%"
+                    ></span>
+
                 </div>
+
             </div>
 
+
             <div class="skill">
+
                 <div class="skill-head">
-                    <span>ภาษาอังกฤษ</span>
-                    <span>ดี</span>
+
+                    <span>
+                        ภาษาอังกฤษ
+                    </span>
+
+                    <span>
+                        ดี
+                    </span>
+
                 </div>
 
                 <div class="bar">
-                    <span data-width="70%"></span>
+
+                    <span
+                        data-width="70%"
+                    ></span>
+
                 </div>
+
             </div>
 
-            <br>
-
-            <h3>Administrative</h3>
 
             <div class="skill">
+
                 <div class="skill-head">
-                    <span>บริหารจัดการ</span>
-                    <span>80%</span>
+
+                    <span>
+                        บริหารจัดการ
+                    </span>
+
+                    <span>
+                        80%
+                    </span>
+
                 </div>
 
                 <div class="bar">
-                    <span data-width="80%"></span>
+
+                    <span
+                        data-width="80%"
+                    ></span>
+
                 </div>
+
             </div>
 
         </div>
@@ -1015,31 +1732,69 @@ footer strong{
 </section>
 
 
-<!-- EXPERIENCE / HOBBIES -->
+<!-- =========================
+     INTERESTS
+========================= -->
+
 <section>
 
     <div class="section-title reveal">
-        <small>04 / PERSONAL</small>
-        <h2>ความสนใจและ<span>กิจกรรม</span></h2>
+
+        <small>
+            04 / PERSONAL
+        </small>
+
+        <h2>
+            ความสนใจและ<span>กิจกรรม</span>
+        </h2>
+
         <div class="section-line"></div>
+
     </div>
+
 
     <div class="card reveal">
 
         <h3 style="margin-bottom:25px">
+
             สิ่งที่ชอบและกิจกรรมยามว่าง
+
         </h3>
+
 
         <div class="tags">
 
-            <div class="tag">ทำอาหาร</div>
-            <div class="tag">ฟังเพลง</div>
-            <div class="tag">เล่นกีตาร์</div>
-            <div class="tag">เล่น Roblox</div>
-            <div class="tag">เล่น Valorant</div>
-            <div class="tag">เล่น ROV</div>
-            <div class="tag">งานสร้างสรรค์</div>
-            <div class="tag">เรียนรู้เทคโนโลยี</div>
+            <div class="tag">
+                ทำอาหาร
+            </div>
+
+            <div class="tag">
+                ฟังเพลง
+            </div>
+
+            <div class="tag">
+                เล่นกีตาร์
+            </div>
+
+            <div class="tag">
+                เล่น Roblox
+            </div>
+
+            <div class="tag">
+                เล่น Valorant
+            </div>
+
+            <div class="tag">
+                เล่น ROV
+            </div>
+
+            <div class="tag">
+                งานสร้างสรรค์
+            </div>
+
+            <div class="tag">
+                เรียนรู้เทคโนโลยี
+            </div>
 
         </div>
 
@@ -1048,104 +1803,234 @@ footer strong{
 </section>
 
 
-<!-- QUOTE -->
+<!-- =========================
+     QUOTE
+========================= -->
+
 <section class="quote">
 
-    <div class="quote-mark">「</div>
+    <div class="quote-mark">
+        「
+    </div>
 
     <h2>
+
         เราจะเติบโตจากจุดเริ่มต้นของเรา
         และก้าวต่อไปด้วยความพยายาม
+
     </h2>
 
     <p>
+
         ความตั้งใจ • ความอดทน • การพัฒนาตัวเอง
+
     </p>
 
 </section>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-    <strong>นายวงศพัทธ์ เข้มแข็ง</strong>
+    <strong>
+        นายวงศพัทธ์ เข้มแข็ง
+    </strong>
 
-    <br><br>
+    <br>
+    <br>
 
-    Wongsapat Khemkhaeng • Resume 2026
+    Wongsapat Khemkhaeng
+    •
+    Resume 2026
 
 </footer>
 
 
 <script>
 
-/* Loading */
+/* =========================
+   LOADING SCREEN
+========================= */
 
-window.addEventListener("load",()=>{
-    setTimeout(()=>{
-        document.getElementById("loader")
-        .classList.add("hide");
-    },700);
-});
+window.addEventListener(
+    "load",
+    function(){
 
+        setTimeout(
+            function(){
 
-/* Scroll reveal */
+                document
+                    .getElementById("loader")
+                    .classList
+                    .add("hide");
 
-const observer = new IntersectionObserver(
-    entries => {
+            },
+            700
+        );
 
-        entries.forEach(entry => {
-
-            if(entry.isIntersecting){
-
-                entry.target.classList.add("active");
-
-                /* Animate skill bars */
-
-                entry.target
-                    .querySelectorAll(".bar span")
-                    .forEach(bar=>{
-                        bar.style.width =
-                            bar.dataset.width;
-                    });
-            }
-
-        });
-
-    },
-    {
-        threshold:.15
     }
 );
 
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const observer =
+    new IntersectionObserver(
+
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                            .classList
+                            .add("active");
+
+
+                        /* Skill Animation */
+
+                        const bars =
+                            entry.target
+                            .querySelectorAll(
+                                ".bar span"
+                            );
+
+                        bars.forEach(
+                            function(bar){
+
+                                bar.style.width =
+                                    bar.dataset.width;
+
+                            }
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold:.15
+        }
+
+    );
+
+
 document
     .querySelectorAll(".reveal")
-    .forEach(el=>observer.observe(el));
+    .forEach(
+        function(element){
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
 
 
-/* Mouse parallax on profile */
+/* =========================
+   PHOTO PARALLAX
+========================= */
 
-const photo =
-    document.querySelector(".photo-frame");
+const photoFrame =
+    document.querySelector(
+        ".photo-frame"
+    );
 
-document.addEventListener("mousemove",e=>{
 
-    if(window.innerWidth < 850) return;
+document.addEventListener(
+    "mousemove",
+    function(event){
 
-    const x =
-        (window.innerWidth/2-e.clientX)/60;
+        if(
+            window.innerWidth < 850
+        ){
+            return;
+        }
 
-    const y =
-        (window.innerHeight/2-e.clientY)/60;
 
-    photo.style.transform =
-        `rotateY(${x}deg) rotateX(${y}deg)`;
+        const x =
+            (
+                window.innerWidth / 2
+                -
+                event.clientX
+            ) / 70;
 
-});
 
-document.addEventListener("mouseleave",()=>{
-    photo.style.transform =
-        "rotateY(0) rotateX(0)";
-});
+        const y =
+            (
+                window.innerHeight / 2
+                -
+                event.clientY
+            ) / 70;
+
+
+        photoFrame.style.transform =
+            `
+            rotateY(${x}deg)
+            rotateX(${y}deg)
+            `;
+
+    }
+);
+
+
+document.addEventListener(
+    "mouseleave",
+    function(){
+
+        photoFrame.style.transform =
+            "rotateY(0deg) rotateX(0deg)";
+
+    }
+);
+
+
+/* =========================
+   SMOOTH NAVIGATION
+========================= */
+
+document
+    .querySelectorAll("nav a")
+    .forEach(
+        function(link){
+
+            link.addEventListener(
+                "click",
+                function(){
+
+                    const target =
+                        document.querySelector(
+                            this.getAttribute(
+                                "href"
+                            )
+                        );
+
+                    if(target){
+
+                        target.scrollIntoView({
+                            behavior:"smooth"
+                        });
+
+                    }
+
+                }
+            );
+
+        }
+    );
 
 </script>
 
